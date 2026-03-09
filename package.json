@@ -1,0 +1,19 @@
+{
+  "name": "hci-portfolio",
+  "version": "1.0.0",
+  "description": "HCI Process Portfolio for documenting iterative design process",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "start": "bun run dev",
+    "preview": "python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
