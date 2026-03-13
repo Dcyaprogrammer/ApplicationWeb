@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Section from '../components/Section.astro';
+---
+
+<Layout title="Brainstorming | HCI Portfolio">
+    <PageHeader 
+        title="Brainstorming" 
+        subtitle="Exploring the problem space and generating initial concepts."
+    />
+
+    <Section title="Problem Space">
+        <p class="text-lg text-neutral-300 mb-8 max-w-3xl">
+            Students face significant challenges when preparing for study abroad. The process is often overwhelming, with information scattered across multiple sources.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="card bg-neutral-900/50">
+                <h3 class="font-bold text-white mb-2">Information Overload</h3>
+                <p class="text-neutral-400 text-sm">Too many sources with conflicting information.</p>
+            </div>
+            <div class="card bg-neutral-900/50">
+                <h3 class="font-bold text-white mb-2">Lack of Engagement</h3>
+                <p class="text-neutral-400 text-sm">Traditional guides are dry and unmotivating.</p>
+            </div>
+            <div class="card bg-neutral-900/50">
+                <h3 class="font-bold text-white mb-2">Complex Process</h3>
+                <p class="text-neutral-400 text-sm">Multi-step procedures that are hard to track.</p>
+            </div>
+        </div>
+    </Section>
+
+    <Section title="Ideation" class="bg-neutral-900/20 border-t border-b border-neutral-800">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="aspect-video bg-neutral-800 border border-neutral-700 flex items-center justify-center">
+                <span class="font-mono text-neutral-500">MINDMAP.png</span>
+            </div>
+            <div class="aspect-video bg-neutral-800 border border-neutral-700 flex items-center justify-center">
+                <span class="font-mono text-neutral-500">SKETCHES.png</span>
+            </div>
+        </div>
+    </Section>
+</Layout>

@@ -1,0 +1,26 @@
+---
+interface Props {
+	title: string;
+	body: string;
+	href?: string;
+    icon?: string;
+}
+
+const { href, title, body, icon } = Astro.props;
+---
+
+<div class="card group h-full flex flex-col justify-between relative">
+    <div>
+        {icon && <div class="text-3xl mb-4 text-neutral-500 group-hover:text-white transition-colors">{icon}</div>}
+        <h3 class="text-xl font-bold mb-2 group-hover:text-white transition-colors font-mono">
+            {title}
+            {href && <span class="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>}
+        </h3>
+        <p class="text-neutral-400 text-sm leading-relaxed group-hover:text-neutral-300 transition-colors">
+            {body}
+        </p>
+    </div>
+    {href && (
+        <a href={href} class="absolute inset-0 z-10" aria-label={`Link to ${title}`}></a>
+    )}
+</div>

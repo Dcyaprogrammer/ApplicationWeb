@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  
+  --color-brand-accent: #2952FF; /* Klein Blue-ish / Electric Blue */
+  /* Lightened background colors for better visibility */
+  --color-bg-dark: #1A1A1A; /* Was #111111 */
+  --color-bg-darker: #121212; /* Was #0A0A0A */
+  --color-border-dark: #404040; /* Was #333333 */
+}
+
+/* Custom Utilities for Neo-Brutalist Vercel Style */
+@layer base {
+  html {
+    @apply bg-bg-dark text-neutral-200 antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  body {
+    @apply min-h-screen flex flex-col;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight text-white;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-bg-darker;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border-dark hover:bg-neutral-500;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-400;
+  }
+  
+  .bg-grid-pattern {
+    background-size: 50px 50px;
+    background-image: linear-gradient(to right, #333 1px, transparent 1px),
+                      linear-gradient(to bottom, #333 1px, transparent 1px);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  }
+
+  .glass-nav {
+    @apply bg-bg-dark/80 backdrop-blur-md border-b border-border-dark;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 focus:ring-offset-bg-dark disabled:opacity-50 disabled:pointer-events-none rounded-none;
+  }
+  
+  .btn-primary {
+    @apply bg-brand-accent text-white hover:bg-blue-600 font-display tracking-wide;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent text-white border border-border-dark hover:bg-bg-darker hover:border-neutral-500;
+  }
+  
+  .card {
+    @apply bg-bg-darker border border-border-dark p-6 transition-all duration-300 hover:border-brand-accent rounded-none relative overflow-hidden;
+  }
+
+  .nav-link {
+    @apply text-sm text-neutral-400 hover:text-white transition-colors duration-200 font-display;
+  }
+  
+  .nav-link.active {
+    @apply text-brand-accent;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold mb-4 font-display;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-neutral-400 max-w-2xl mb-12 font-sans;
+  }
+}
