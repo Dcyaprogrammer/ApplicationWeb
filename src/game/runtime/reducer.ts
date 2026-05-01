@@ -10,7 +10,11 @@ import {
   updateFlags,
 } from "./helpers";
 
-const resolveStandardGameOver = (stats: RuntimeState["stats"]) => {
+const resolveStandardGameOver = (
+  stats: RuntimeState["stats"],
+  state: RuntimeState,
+) => {
+  // 失败条件
   if (stats.gpa <= 0) {
     return "Academic Dismissal. Your GPA hit rock bottom.";
   }
@@ -22,6 +26,14 @@ const resolveStandardGameOver = (stats: RuntimeState["stats"]) => {
   }
   if (stats.experience <= 0) {
     return "Blank Resume. You have absolutely no practical experience to show.";
+  }
+
+  // 时间胜利条件：Day 300+ 自动完成申请季
+  if (state.currentDay >= 300 && state.currentPhase === "year1") {
+    return {
+      gameOverReason: "Application Season Complete! You survived the entire process and made it through.",
+      isWin: true,
+    };
   }
 
   return null;
@@ -63,7 +75,18 @@ export const resolveChoiceEffects = (
     nextCooldowns[state.currentCard.id] = state.currentCard.meta.cooldownTurns;
   }
 
-  const gameOverReason = resolveStandardGameOver(nextStats);
+  const gameOverResult = resolveStandardGameOver(nextStats, {
+    ...state,
+    currentDay: nextDay,
+    currentPhase: nextPhase,
+  });
+
+  // 检查是字符串失败信息还是对象（包含胜利条件）
+  const isWin = typeof gameOverResult === "object" && gameOverResult?.isWin === true;
+  const gameOverReason = typeof gameOverResult === "string"
+    ? gameOverResult
+    : gameOverResult?.gameOverReason ?? null;
+  const isGameOver = gameOverReason !== null;
 
   return {
     nextState: {
@@ -82,10 +105,10 @@ export const resolveChoiceEffects = (
     },
     feedbackMessage,
     gameOver: {
-      isGameOver: gameOverReason !== null,
+      isGameOver,
       gameOverReason,
-      isWin: false,
-      currencyAward: 0,
+      isWin,
+      currencyAward: isWin ? 100 : 0,
     },
   };
 };
