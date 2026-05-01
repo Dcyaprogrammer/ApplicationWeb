@@ -25,7 +25,7 @@ export const DEMO_SPECIAL_EVENTS: RuntimeCard[] = [
         id: "go_hospital",
         label: "Hospital",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { mentality: -15, energy: 10 },
           resultText: "Expensive, but you got some rest.",
         },
@@ -34,7 +34,7 @@ export const DEMO_SPECIAL_EVENTS: RuntimeCard[] = [
         id: "ignore_it",
         label: "Walk it off",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { energy: -20, gpa: -5 },
           resultText: "It got worse. You couldn't focus in class.",
         },
@@ -64,7 +64,7 @@ export const DEMO_SPECIAL_EVENTS: RuntimeCard[] = [
         id: "take_break",
         label: "Take a Break",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { mentality: 30, gpa: -15 },
           resultText: "You missed a deadline, but you feel human again.",
         },
@@ -73,7 +73,7 @@ export const DEMO_SPECIAL_EVENTS: RuntimeCard[] = [
         id: "push_through",
         label: "Keep Working",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { mentality: -20, energy: -20 },
           resultText: "You wrote 10 lines of code. It's all buggy.",
         },
@@ -105,7 +105,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "build_tracker",
         label: "Build it tonight",
         effect: {
-          daysToAdvance: 18,
+          daysToAdvance: 54,
           stats: { experience: 10, mentality: 8, energy: -5 },
           resultText: "Boring, but future-you is much less likely to explode.",
           addFlags: ["has_deadline_tracker"],
@@ -115,7 +115,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "wing_schedule",
         label: "I'll remember it",
         effect: {
-          daysToAdvance: 16,
+          daysToAdvance: 48,
           stats: { mentality: -8, experience: -5 },
           resultText: "You save time now, but your future tabs are going to become a crime scene.",
         },
@@ -142,7 +142,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "close_tabs",
         label: "Close the tabs",
         effect: {
-          daysToAdvance: 18,
+          daysToAdvance: 54,
           stats: { mentality: 8, experience: -2 },
           resultText: "You lose some gossip, but you keep your sanity.",
         },
@@ -151,7 +151,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "keep_scrolling",
         label: "Keep scrolling",
         effect: {
-          daysToAdvance: 20,
+          daysToAdvance: 60,
           stats: { mentality: -12, energy: -6, experience: 4 },
           resultText: "You learn a little, panic a lot.",
         },
@@ -182,7 +182,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "sleep_early",
         label: "Sleep properly",
         effect: {
-          daysToAdvance: 20,
+          daysToAdvance: 60,
           stats: { energy: 20, mentality: 10, gpa: -5 },
           resultText: "You lose a night of progress, but gain back a functioning brain.",
         },
@@ -191,7 +191,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "power_through",
         label: "Push through",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { energy: -15, experience: 5, mentality: -10 },
           resultText: "You stay productive for three hours and useless for the next twelve.",
         },
@@ -222,7 +222,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "negotiate_clause",
         label: "Negotiate it",
         effect: {
-          daysToAdvance: 20,
+          daysToAdvance: 60,
           stats: { experience: 10, mentality: 5, energy: -5 },
           resultText: "Awkward, but you stop the contract from being a one-way trap.",
           addFlags: ["contract_checked"],
@@ -232,7 +232,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "ignore_clause",
         label: "Ignore it",
         effect: {
-          daysToAdvance: 20,
+          daysToAdvance: 60,
           stats: { mentality: -8, experience: -6 },
           resultText: "The problem remains future-you's problem. That is not a real solution.",
         },
@@ -263,7 +263,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "accept_review",
         label: "Trade feedback",
         effect: {
-          daysToAdvance: 16,
+          daysToAdvance: 48,
           stats: { experience: 12, mentality: 5, energy: -4 },
           resultText: "Painful comments, better essay.",
         },
@@ -272,7 +272,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "protect_ego",
         label: "Protect your ego",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { mentality: -5, experience: -8 },
           resultText: "Your feelings survive. Your draft does not improve.",
         },
@@ -301,7 +301,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "reupload_now",
         label: "Fix it now",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { energy: -8, experience: 8, mentality: 4 },
           resultText: "Annoying, but you catch the issue before it becomes a catastrophe.",
         },
@@ -310,7 +310,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "hope_it_works",
         label: "Hope it's fine",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { mentality: -12, experience: -6 },
           resultText: "You save ten minutes and buy twelve hours of paranoia.",
         },
@@ -338,7 +338,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "make_budget",
         label: "Build a budget sheet",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { experience: 8, mentality: 6, energy: -4 },
           resultText: "Not glamorous, but uncertainty becomes something you can actually reason about.",
           addFlags: ["budget_planned"],
@@ -348,7 +348,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "avoid_numbers",
         label: "Avoid the topic",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { mentality: -10, experience: -5 },
           resultText: "The money problem does not disappear. It just becomes louder later.",
         },
@@ -374,7 +374,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "send_packet",
         label: "Send a real packet",
         effect: {
-          daysToAdvance: 18,
+          daysToAdvance: 54,
           stats: { experience: 10, mentality: 4, energy: -4 },
           resultText: "You make it easy to help you. Professors notice that.",
           addFlags: ["recommender_packet_ready"],
@@ -384,7 +384,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "send_short_email",
         label: "Just send a short email",
         effect: {
-          daysToAdvance: 16,
+          daysToAdvance: 48,
           stats: { experience: -8, mentality: -4 },
           resultText: "You technically asked. You did not make the job easy.",
         },
@@ -410,7 +410,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "rewrite_with_metrics",
         label: "Rewrite with metrics",
         effect: {
-          daysToAdvance: 20,
+          daysToAdvance: 60,
           stats: { experience: 12, energy: -5 },
           resultText: "Specific achievements make you look like a real person who did real work.",
         },
@@ -419,7 +419,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "keep_vague_cv",
         label: "Leave it vague",
         effect: {
-          daysToAdvance: 18,
+          daysToAdvance: 54,
           stats: { experience: -10, mentality: -3 },
           resultText: "The CV remains technically fine and strategically weak.",
         },
@@ -445,7 +445,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "check_each_policy",
         label: "Check each policy",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { experience: 9, mentality: 4, energy: -3 },
           resultText: "Tedious, but you avoid paying or missing things blindly.",
         },
@@ -454,7 +454,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "assume_same_policy",
         label: "Assume they're all the same",
         effect: {
-          daysToAdvance: 16,
+          daysToAdvance: 48,
           stats: { experience: -8, mentality: -5 },
           resultText: "This is how avoidable admin mistakes become lore.",
         },
@@ -481,7 +481,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "set_expectations",
         label: "Explain the process",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { mentality: 6, experience: 4, energy: -4 },
           resultText: "It does not solve everything, but at least the panic becomes more informed.",
         },
@@ -490,7 +490,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "absorb_pressure",
         label: "Just absorb it",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { mentality: -12, energy: -5 },
           resultText: "You keep the peace for ten minutes and inherit the stress for ten days.",
         },
@@ -517,7 +517,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "build_backup_list",
         label: "Build a backup list",
         effect: {
-          daysToAdvance: 18,
+          daysToAdvance: 54,
           stats: { mentality: 12, experience: 8, energy: -4 },
           resultText: "The dream stays alive, but the floor gets sturdier.",
         },
@@ -526,7 +526,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "only_reach_schools",
         label: "Stay all-in on reaches",
         effect: {
-          daysToAdvance: 18,
+          daysToAdvance: 54,
           stats: { mentality: -8, experience: -4 },
           resultText: "The fantasy remains clean. The risk profile becomes hilarious.",
         },
@@ -552,7 +552,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "hunt_waivers",
         label: "Hunt for waivers",
         effect: {
-          daysToAdvance: 16,
+          daysToAdvance: 48,
           stats: { experience: 8, mentality: 5, energy: -4 },
           resultText: "Administrative scavenger hunt, but your wallet survives a little better.",
         },
@@ -561,7 +561,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "pay_without_checking",
         label: "Just pay everything",
         effect: {
-          daysToAdvance: 16,
+          daysToAdvance: 48,
           stats: { mentality: -6, experience: -4 },
           resultText: "Fast, expensive, and slightly insulting to your future self.",
         },
@@ -588,7 +588,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "prepare_questions",
         label: "Prepare questions",
         effect: {
-          daysToAdvance: 16,
+          daysToAdvance: 48,
           stats: { experience: 10, mentality: 5, energy: -3 },
           resultText: "The conversation becomes useful because you did not arrive empty-handed.",
         },
@@ -597,7 +597,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "avoid_professor",
         label: "Avoid the meeting",
         effect: {
-          daysToAdvance: 16,
+          daysToAdvance: 48,
           stats: { experience: -7, mentality: -4 },
           resultText: "Avoidance feels safe until you still need the answer later.",
         },
@@ -623,7 +623,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "do_mock",
         label: "Do the mock",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { experience: 12, mentality: -3, energy: -4 },
           resultText: "Embarrassing now is cheaper than embarrassing live.",
         },
@@ -632,7 +632,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "skip_mock",
         label: "Skip it",
         effect: {
-          daysToAdvance: 20,
+          daysToAdvance: 60,
           stats: { mentality: 3, experience: -8 },
           resultText: "Your comfort remains intact. Your preparedness does not.",
         },
@@ -664,7 +664,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "push_back_on_fees",
         label: "Push back hard",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { mentality: -4, experience: 8, energy: -5 },
           resultText: "It costs conflict, but at least you stop treating vague invoices like weather.",
         },
@@ -673,7 +673,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "pay_silently",
         label: "Pay it quietly",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { mentality: -10, experience: -6 },
           resultText: "The bill gets settled. The feeling of being handled does not.",
         },
@@ -699,7 +699,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "send_precise_email",
         label: "Send a precise email",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { experience: 7, mentality: 4, energy: -2 },
           resultText: "Short, specific questions tend to produce actual answers.",
         },
@@ -708,7 +708,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
         id: "guess_the_policy",
         label: "Guess the policy",
         effect: {
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           stats: { experience: -7, mentality: -4 },
           resultText: "Confidence is not the same thing as verification.",
         },
@@ -738,7 +738,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: 20, energy: 10, experience: -10 },
           resultText: "You signed a contract. Time to relax... right?",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
           addFlags: ["route_agency"],
           removeFlags: ["route_diy"],
         },
@@ -750,7 +750,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: -10, energy: -15, experience: 15 },
           resultText: "You opened 20 tabs of university requirements. It's on.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
           addFlags: ["route_diy"],
           removeFlags: ["route_agency"],
         },
@@ -778,7 +778,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { gpa: -10, mentality: 10, experience: -20 },
           resultText: "Out of sight, out of mind.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "agency_2_ghosting_a",
       },
@@ -788,7 +788,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { energy: -20, mentality: -10, experience: 20 },
           resultText: "They are annoyed, but you retain control.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "agency_2_ghosting_b",
       },
@@ -814,7 +814,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { energy: -25, mentality: -20 },
           resultText: "They finally picked up, but gave a vague excuse.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "agency_3a_spamfolder",
       },
@@ -824,7 +824,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: 10, experience: -15 },
           resultText: "Ignorance is bliss... for now.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "agency_3a_spamfolder",
       },
@@ -850,7 +850,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { energy: -30, gpa: 10, experience: 20 },
           resultText: "You are doing their job for them.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "agency_2.5_materials",
       },
@@ -860,7 +860,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: -25, energy: -10 },
           resultText: "They assigned a 'senior' consultant. Same garbage.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "agency_2.5_materials",
       },
@@ -886,7 +886,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: -20, energy: -15 },
           resultText: "You stood in line for 4 hours, but got them.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "agency_3b_template",
       },
@@ -922,7 +922,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: -30, energy: -30, experience: 15 },
           resultText: "You fired them. Time to apply alone.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "agency_4_upsell",
       },
@@ -932,7 +932,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: -40, energy: -15 },
           resultText: "Dreams crushed. You settle for safe schools.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "agency_4_upsell",
       },
@@ -958,7 +958,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { gpa: -20, experience: -20 },
           resultText: "Your essay looks like 10,000 others.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "agency_4_upsell",
       },
@@ -968,7 +968,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { energy: -20, mentality: 10, experience: 20 },
           resultText: "You went rogue and submitted it yourself.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "agency_4_upsell",
       },
@@ -994,7 +994,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: -20, experience: -15 },
           resultText: "It was a fake remote internship. Worthless.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "agency_4.5_mock_interview",
       },
@@ -1004,7 +1004,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: 15, energy: -10, experience: 10 },
           resultText: "You stood your ground.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "agency_4.5_mock_interview",
       },
@@ -1030,7 +1030,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: -10, experience: -20 },
           resultText: "You sound robotic and unnatural.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "final_push",
       },
@@ -1040,7 +1040,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { energy: -20, experience: 20 },
           resultText: "You stayed up watching YouTube guides.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "final_push",
       },
@@ -1066,7 +1066,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { gpa: 15, energy: -30, experience: 15 },
           resultText: "Exhausting, but you secured the 7.5!",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "diy_2_gre",
       },
@@ -1076,7 +1076,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { gpa: -20, mentality: 10, energy: 10 },
           resultText: "You got a 6.5. Say goodbye to top programs.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "diy_2_gre",
       },
@@ -1102,7 +1102,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { energy: -35, mentality: -15, experience: 10 },
           resultText: "Your brain is fried, but you passed.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "diy_2.5_research",
       },
@@ -1112,7 +1112,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { gpa: -15, energy: 20 },
           resultText: "You saved energy, but your options are limited.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "diy_2.5_research",
       },
@@ -1138,7 +1138,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { energy: 20, experience: -30 },
           resultText: "You have more time, but a weaker profile.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "diy_3_selection",
       },
@@ -1148,7 +1148,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { gpa: -10, mentality: -30, energy: -30, experience: 35 },
           resultText: "You barely sleep, but you get a co-authorship.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "diy_3_selection",
       },
@@ -1174,7 +1174,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: 15, experience: -10 },
           resultText: "High risk, high reward... or total failure.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "diy_4_recs",
       },
@@ -1184,7 +1184,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: -5, experience: 20 },
           resultText: "Safe, Target, Reach. A mature strategy.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "diy_4_recs",
       },
@@ -1210,7 +1210,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { energy: -15, mentality: -10, experience: 25 },
           resultText: "Awkward, but you got the signature.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "diy_5_writer",
       },
@@ -1220,7 +1220,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { gpa: -15, experience: -15 },
           resultText: "A weak letter that carries no weight.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "diy_5_writer",
       },
@@ -1246,7 +1246,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { gpa: -20, energy: 20, experience: -15 },
           resultText: "It sounds like a robot wrote it.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "diy_5.5_interview",
       },
@@ -1256,7 +1256,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { energy: -30, mentality: -15, experience: 25 },
           resultText: "Draft #10 is finally authentic.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "diy_5.5_interview",
       },
@@ -1282,7 +1282,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { energy: -20, mentality: -15, experience: 30 },
           resultText: "You answered the coding question perfectly.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "final_push",
       },
@@ -1292,7 +1292,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { experience: -40, mentality: -10 },
           resultText: "You blanked on a basic algorithm.",
-          daysToAdvance: 30,
+          daysToAdvance: 90,
         },
         nextCardId: "final_push",
       },
@@ -1317,7 +1317,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: -25, energy: -10 },
           resultText: "Seeing others get offers destroys your peace.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "decision_day",
       },
@@ -1327,7 +1327,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: 25, energy: 15 },
           resultText: "You start painting. It actually helps.",
-          daysToAdvance: 60,
+          daysToAdvance: 180,
         },
         nextCardId: "decision_day",
       },
@@ -1353,7 +1353,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: -10 },
           resultText: "The moment of truth...",
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           triggerGameOver:
             "DEMO COMPLETED! You survived the brutal application season. You got the offer!",
           isWin: true,
@@ -1366,7 +1366,7 @@ export const DEMO_MAIN_DECK: RuntimeCard[] = [
         effect: {
           stats: { mentality: -20 },
           resultText: "The suspense is killing you.",
-          daysToAdvance: 15,
+          daysToAdvance: 45,
           triggerGameOver:
             "DEMO COMPLETED! You survived the brutal application season. You got the offer!",
           isWin: true,
