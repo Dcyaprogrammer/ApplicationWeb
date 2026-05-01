@@ -7,13 +7,111 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
-// TODO: Define your models here
-// Example:
-// model User {
-//   id    Int     @id @default(autoincrement())
-//   email String  @unique
-//   name  String?
-// }
+enum CardType {
+  milestone
+  dynamic
+  crisis
+  recovery
+  knowledge
+  ending
+}
+
+enum RunStatus {
+  active
+  won
+  lost
+  abandoned
+}
+
+enum GameRoute {
+  agency
+  diy
+  mixed
+  undecided
+}
+
+model Card {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  title           String?
+  body            String
+  phase           String
+  category        String
+  cardType        CardType @default(dynamic) @map("card_type")
+  characterId     String   @map("character_id")
+  stressLevel     String?  @map("stress_level")
+  routeTags       Json?    @map("route_tags")
+  requirements    Json?
+  choices         Json
+  weight          Int      @default(100)
+  priority        Int      @default(0)
+  cooldownTurns   Int      @default(0) @map("cooldown_turns")
+  oncePerRun      Boolean  @default(false) @map("once_per_run")
+  repeatable      Boolean  @default(true)
+  minPressure     Int?     @map("min_pressure")
+  maxPressure     Int?     @map("max_pressure")
+  educationalTags Json?    @map("educational_tags")
+  learningGoal    String?  @map("learning_goal")
+  misconceptionTag String? @map("misconception_tag")
+  guideEntryId    String?  @map("guide_entry_id")
+  setFlags        Json?    @map("set_flags")
+  removeFlags     Json?    @map("remove_flags")
+  followupArc     String?  @map("followup_arc")
+  published       Boolean  @default(true)
+  histories       RunCardHistory[]
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("cards")
+}
+
+model Run {
+  id            String           @id @default(cuid())
+  userId        String?          @map("user_id")
+  seed          String?
+  status        RunStatus        @default(active)
+  currentPhase  String           @map("current_phase")
+  currentDay    Int              @default(0) @map("current_day")
+  route         GameRoute        @default(undecided)
+  statsSnapshot Json             @map("stats_snapshot")
+  flags         Json
+  pressure      Int              @default(0)
+  runtimeSnapshot Json?          @map("runtime_snapshot")
+  histories     RunCardHistory[]
+  createdAt     DateTime         @default(now()) @map("created_at")
+  updatedAt     DateTime         @updatedAt @map("updated_at")
+
+  @@map("runs")
+}
+
+model RunCardHistory {
+  id             String   @id @default(cuid())
+  runId          String   @map("run_id")
+  cardId         String   @map("card_id")
+  turnIndex      Int      @map("turn_index")
+  choiceId       String   @map("choice_id")
+  statsBefore    Json     @map("stats_before")
+  statsAfter     Json     @map("stats_after")
+  pressureBefore Int      @map("pressure_before")
+  pressureAfter  Int      @map("pressure_after")
+  flagsBefore    Json?    @map("flags_before")
+  flagsAfter     Json?    @map("flags_after")
+  createdAt      DateTime @default(now()) @map("created_at")
+  run            Run      @relation(fields: [runId], references: [id], onDelete: Cascade)
+  card           Card     @relation(fields: [cardId], references: [id], onDelete: Restrict)
+
+  @@index([runId, turnIndex])
+  @@index([cardId])
+  @@map("run_card_history")
+}
+
+model BalanceConfig {
+  key         String   @id
+  value       Json
+  description String?
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("balance_configs")
+}

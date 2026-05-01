@@ -13,7 +13,12 @@
     "preview": "vite preview",
     "start": "bun run src/server/index.ts",
     "db:init": "bun run src/db/init.ts",
-    "db:seed": "bun run src/db/init.ts",
+    "db:seed": "bun run src/db/init.ts --seed-only",
+    "db:seed:dry": "bun run src/db/init.ts --dry-run --seed-only",
+    "db:schema": "bun run src/db/init.ts --schema-only",
+    "db:export:supabase": "bun run src/db/exportSupabaseSql.ts",
+    "db:check:supabase": "bun run src/db/checkSupabase.ts",
+    "db:check:supabase:catalog": "bun run src/db/checkSupabaseCatalog.ts",
     "api:example": "bun run src/api/example.ts",
     "server": "bun run src/server/index.ts",
     "api:dev": "bun --hot run src/server/index.ts"

@@ -4,14 +4,14 @@ import type { PanInfo } from 'framer-motion';
 import { useGameStore, getFormattedDate } from '../store/gameStore';
 import type { StatKey } from '../../types/game';
 
-export const GameScreen = ({ 
-  onQuit, 
-  onNavigate 
-}: { 
-  onQuit: () => void; 
-  onNavigate: (view: 'store' | 'knowledge') => void; 
+export const GameScreen = ({
+  onQuit,
+  onNavigate
+}: {
+  onQuit: () => void;
+  onNavigate: (view: 'store' | 'knowledge') => void;
 }) => {
-  const { stats, activeStressLevel, currentDay, currentCard, isGameOver, gameOverReason, isWin, currency, initializeGame, makeChoice, hasSeenTutorial, completeTutorial } = useGameStore();
+  const { stats, activeStressLevel, currentDay, currentCard, isGameOver, gameOverReason, isWin, currency, initializeGame, makeChoice, hasSeenTutorial, completeTutorial, catalogSource, catalogCardCount } = useGameStore();
   
   const dateObj = getFormattedDate(currentDay);
 
@@ -252,13 +252,18 @@ export const GameScreen = ({
 
       {/* TOP STATUS BAR (Pop Design) */}
       <div className="relative z-20 w-full bg-white border-b-[6px] border-black shadow-[0_6px_0_0_#D0BFFF] px-4 py-4 sm:px-8 sm:py-6 flex justify-between items-center">
-        
+
         {/* Left side: The 4 core stats */}
         <div className="flex items-start gap-3 sm:gap-6">
           <StatIcon type="gpa" value={stats.gpa} previewDelta={previewStats?.gpa} />
           <StatIcon type="mentality" value={stats.mentality} previewDelta={previewStats?.mentality} />
           <StatIcon type="energy" value={stats.energy} previewDelta={previewStats?.energy} />
           <StatIcon type="experience" value={stats.experience} previewDelta={previewStats?.experience} />
+        </div>
+
+        {/* Debug: Catalog source indicator (tiny, bottom right) */}
+        <div className="absolute bottom-1 right-2 text-[8px] font-bold text-gray-400 uppercase tracking-wider">
+          {catalogSource} • {catalogCardCount} cards
         </div>
 
         {/* Right side: Integrated Brutalist Date Badge */}

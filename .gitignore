@@ -43,5 +43,10 @@ neo-brutalism-ui-library/
 
 ai-log/
 
-product.md 
+product.md
 dev_plan.md
+
+# Deployment and testing documentation (optional to track)
+DEPLOYMENT_CHECKLIST.md
+SUPABASE_PIPELINE_VERIFICATION.md
+TEST_SUPABASE_PIPELINE.md

@@ -51,4 +51,15 @@ npm install
 npm run dev
 ```
 
+### Card Catalog Source
+
+The game catalog can now load from multiple sources through `VITE_GAME_CATALOG_SOURCE`:
+
+- `auto`: use Supabase when `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are present, otherwise fallback to the built-in demo catalog
+- `supabase`: always load cards from Supabase
+- `local`: load the serialized catalog from `localStorage`
+- `demo`: always use the built-in demo catalog
+
+For normal development, `auto` is the safest default.
+
 *(Note: Backend setup instructions will be updated once the server API is implemented).*
