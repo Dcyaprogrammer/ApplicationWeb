@@ -181,10 +181,10 @@ export class SupabaseCatalogSource implements CatalogSource {
       throw configError;
     }
 
-    const storedCards = ((cards ?? []) as Array<SupabaseCardRow | StoredCardRecord>).map(
-      normalizeSupabaseCardRow,
+    const storedCards = (cards ?? []).map((card: unknown) =>
+      normalizeSupabaseCardRow(card as SupabaseCardRow | StoredCardRecord),
     );
-    const config = ((configRows ?? []) as SupabaseBalanceConfigRow[])[0] ?? null;
+    const config = (configRows ?? [])[0] as SupabaseBalanceConfigRow | null;
     const configuredStartCardId = config?.value?.startCardId;
 
     return deserializeCatalogFromStorage({
