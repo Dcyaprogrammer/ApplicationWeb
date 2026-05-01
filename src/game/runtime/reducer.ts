@@ -28,10 +28,10 @@ const resolveStandardGameOver = (
     return "Blank Resume. You have absolutely no practical experience to show.";
   }
 
-  // 时间胜利条件：Day 300+ 自动完成申请季
-  if (state.currentDay >= 300 && state.currentPhase === "year1") {
+  // 时间胜利条件：完成完整的三年申请之旅（Day 1000+）
+  if (state.currentDay >= 1000) {
     return {
-      gameOverReason: "Application Season Complete! You survived the entire process and made it through.",
+      gameOverReason: "🎓 Application Journey Complete! You've survived all three years - from preparation to applications to results. You made it through the entire grad school application process!",
       isWin: true,
     };
   }

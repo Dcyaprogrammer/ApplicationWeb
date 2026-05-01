@@ -12,10 +12,10 @@ const DAYS_IN_MONTH = 30;
 const MONTH_NAMES = ["SEP", "OCT", "NOV", "DEC", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG"];
 
 export const INITIAL_STATS = {
-  gpa: 50,
-  mentality: 50,
-  energy: 50,
-  experience: 50,
+  gpa: 75,
+  mentality: 75,
+  energy: 75,
+  experience: 75,
 };
 
 export const getFormattedDate = (totalDays: number) => {
