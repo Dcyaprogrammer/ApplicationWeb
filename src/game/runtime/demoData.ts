@@ -365,7 +365,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
     stressLevel: "chill",
     weight: 100,
     requirements: {
-      excludeFlags: ["route_agency", "route_diy"],
+      excludedFlags: ["route_agency", "route_diy"],
     },
     meta: {
       cardType: "knowledge",
@@ -519,7 +519,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
     stressLevel: "grind",
     weight: 85,
     requirements: {
-      excludeFlags: ["route_agency", "route_diy"],
+      excludedFlags: ["route_agency", "route_diy"],
     },
     meta: {
       cardType: "knowledge",
@@ -671,7 +671,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
     stressLevel: "chill",
     weight: 90,
     requirements: {
-      excludeFlags: ["route_agency", "route_diy"],
+      excludedFlags: ["route_agency", "route_diy"],
     },
     meta: {
       cardType: "recovery",
@@ -861,7 +861,7 @@ export const DEMO_DYNAMIC_CARDS: RuntimeCard[] = [
     stressLevel: "grind",
     weight: 92,
     requirements: {
-      excludeFlags: ["route_agency", "route_diy"],
+      excludedFlags: ["route_agency", "route_diy"],
     },
     meta: {
       cardType: "dynamic",
