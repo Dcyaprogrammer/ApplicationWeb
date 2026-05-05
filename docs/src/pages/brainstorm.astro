@@ -4,11 +4,334 @@ import PageHeader from '../components/PageHeader.astro';
 import Section from '../components/Section.astro';
 ---
 
-<Layout title="Brainstorming | HCI Portfolio">
+<Layout title="Gradventure | Brainstorming">
     <PageHeader 
         title="Brainstorming" 
         description="Exploring the problem space and generating initial concepts."
     />
+
+    <!-- NEW SECTION: The Why -->
+    <Section title="The Why" class="bg-brand-accent border-y-4 border-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-8">
+                <span class="bg-black text-white font-black px-4 py-2 border-4 border-black shadow-neo text-xl uppercase">Our Track</span>
+                <span class="bg-brand-yellow text-black font-black px-6 py-2 border-4 border-black shadow-neo text-2xl uppercase transform -rotate-2">Social (B2: XJTLU Student Development)</span>
+            </div>
+
+            <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform rotate-1 max-w-4xl">
+                <p class="text-black font-bold text-lg leading-relaxed mb-6">
+                    Our main motivation for choosing the <span class="bg-brand-pink px-2 py-1 border-2 border-black shadow-neo inline-block">Social Track</span>, rather than the Heritage or Active Tracks, is that it directly focuses on <span class="bg-brand-yellow px-2 py-1 border-2 border-black shadow-neo inline-block">student users like ourselves</span>. We are strongly interested in developing a product that can bring practical value to our own community, as we understand students' needs, preferences, and daily challenges more closely. This also led us to choose <span class="bg-brand-cyan px-2 py-1 border-2 border-black shadow-neo inline-block">B2: XJTLU Student Development</span>, as we hope to create something that benefits and engages the students around us.
+                </p>
+
+                <p class="text-black font-bold text-lg leading-relaxed mb-6">
+                    Another reason is that the Social Track gives us <span class="bg-brand-green px-2 py-1 border-2 border-black shadow-neo inline-block">greater freedom in artistic and interaction design</span>. Since the target users are relatively young and clearly defined, we can adopt a more creative and distinctive design approach. In contrast, the Heritage and Active Tracks require more inclusive design for broader age groups and often involve stricter functional constraints, such as AR-based interactions.
+                </p>
+
+                <p class="text-black font-bold text-lg leading-relaxed">
+                    Finally, our topic responds to a <span class="bg-brand-accent text-white px-2 py-1 border-2 border-black shadow-neo inline-block">real gap in study abroad preparation support</span>. Students often lack accessible, well-organized guidance during this process, which is also why the SAT department proposed this app. Therefore, we aim to build a flexible, scalable platform that integrates educational resources and useful information while remaining engaging. It can also help the university better understand students' needs and provide timely support.
+                </p>
+            </div>
+        </div>
+    </Section>
+
+    <!-- NEW SECTION: The Gap -->
+    <Section title="The Gap: Academic Research & Commercial Products">
+        <div class="mb-12 bg-white p-6 border-4 border-black shadow-neo inline-block transform -rotate-1">
+            <p class="text-black text-xl font-bold leading-relaxed">
+                We analyzed <span class="bg-brand-yellow px-2 py-1 border-2 border-black shadow-neo">4 academic papers</span> and <span class="bg-brand-pink px-2 py-1 border-2 border-black shadow-neo">4 commercial products</span> to identify opportunities in the current landscape.
+                <span class="block mt-2 text-sm text-gray-700">Click each item below to expand the full analysis.</span>
+            </p>
+        </div>
+
+        <!-- Academic Papers -->
+        <div class="mb-16">
+            <h3 class="text-4xl font-black mb-8 font-display uppercase border-b-8 border-black pb-2 inline-block bg-brand-yellow px-4 py-2 border-4 border-black shadow-neo transform -rotate-1">📚 Academic Papers</h3>
+
+            <div class="space-y-6">
+                <!-- Paper 1 -->
+                <details class="group bg-white border-4 border-black shadow-neo transform rotate-1 hover:rotate-0 transition-transform">
+                    <summary class="cursor-pointer p-6 font-black text-xl hover:bg-gray-50 select-none flex items-center justify-between">
+                        <span class="flex items-center gap-3">
+                            <span class="bg-brand-accent text-white text-2xl px-3 py-1 border-2 border-black">01</span>
+                            <span>Analysing Gamification Elements in Educational Environments</span>
+                        </span>
+                        <span class="text-brand-accent text-2xl transform group-open:rotate-45 transition-transform">+</span>
+                    </summary>
+                    <div class="px-6 pb-6 border-t-4 border-black">
+                        <p class="text-sm font-bold text-gray-700 mb-4 italic border-l-4 border-brand-green pl-3">
+                            DOI: <a href="https://doi.org/10.1186/s40561-019-0106-1" target="_blank" class="underline hover:text-brand-accent">https://doi.org/10.1186/s40561-019-0106-1</a>
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-brand-green border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">✅ What They Did Well</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li>Provides a <strong>comprehensive five-dimensional gamification framework</strong> (performance, social, personal, ecological, fictional) for systematic analysis of educational game design</li>
+                                    <li>Supports <strong>systematic analysis</strong> with a clear taxonomy for evaluating gamified learning systems beyond simple points/badges</li>
+                                    <li><strong>Highly adaptable</strong> across different subjects, platforms, and age groups, making it applicable to various educational settings</li>
+                                </ol>
+                            </div>
+                            <div class="bg-brand-pink border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">❌ What They Missed</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li><strong>Mainly theoretical</strong> with limited practical implementation guidance for real educational products</li>
+                                    <li>Does not address <strong>dynamic decision-making journeys</strong> - no discussion of branching paths or personalized learning trajectories</li>
+                                    <li><strong>Limited longitudinal focus</strong> - doesn't explain how to sustain engagement over extended periods or through evolving goals</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Paper 2 -->
+                <details class="group bg-white border-4 border-black shadow-neo transform -rotate-1 hover:rotate-0 transition-transform">
+                    <summary class="cursor-pointer p-6 font-black text-xl hover:bg-gray-50 select-none flex items-center justify-between">
+                        <span class="flex items-center gap-3">
+                            <span class="bg-brand-accent text-white text-2xl px-3 py-1 border-2 border-black">02</span>
+                            <span>Engaging Engineering Students with Gamification: An Empirical Study</span>
+                        </span>
+                        <span class="text-brand-accent text-2xl transform group-open:rotate-45 transition-transform">+</span>
+                    </summary>
+                    <div class="px-6 pb-6 border-t-4 border-black">
+                        <p class="text-sm font-bold text-gray-700 mb-4 italic border-l-4 border-brand-green pl-3">
+                            Gabriel et al.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-brand-green border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">✅ What They Did Well</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li><strong>Long-term empirical study</strong> in real educational context (2 consecutive years, gamified vs non-gamified comparison)</li>
+                                    <li>Clearly <strong>mapped gamification elements to learning behaviors</strong> (XP, levels, leaderboards → feedback, autonomy, relatedness)</li>
+                                    <li>Combined <strong>quantitative and qualitative feedback</strong> with statistical testing (Mann-Whitney U) and user ratings of elements</li>
+                                </ol>
+                            </div>
+                            <div class="bg-brand-pink border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">❌ What They Missed</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li><strong>Entirely linear learning path</strong> - no branching decision points or choice-based pathways</li>
+                                    <li>Single numerical dimension focus (XP/levels) - doesn't explore <strong>multiple parallel status values</strong> and their interactions</li>
+                                    <li>Rewards remain <strong>within the course system</strong> only - no examination of external/real-world rewards</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Paper 3 -->
+                <details class="group bg-white border-4 border-black shadow-neo transform rotate-1 hover:rotate-0 transition-transform">
+                    <summary class="cursor-pointer p-6 font-black text-xl hover:bg-gray-50 select-none flex items-center justify-between">
+                        <span class="flex items-center gap-3">
+                            <span class="bg-brand-accent text-white text-2xl px-3 py-1 border-2 border-black">03</span>
+                            <span>Learn, Earn, and Game On: Integrated Reward Mechanism</span>
+                        </span>
+                        <span class="text-brand-accent text-2xl transform group-open:rotate-45 transition-transform">+</span>
+                    </summary>
+                    <div class="px-6 pb-6 border-t-4 border-black">
+                        <p class="text-sm font-bold text-gray-700 mb-4 italic border-l-4 border-brand-green pl-3">
+                            DOI: <a href="https://doi.org/10.3390/educsci15091202" target="_blank" class="underline hover:text-brand-accent">https://doi.org/10.3390/educsci15091202</a>
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-brand-green border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">✅ What They Did Well</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li>Clear <strong>cross-game reward mechanism</strong> connecting educational (EduGym) and recreational (EduShooter) games via shared currency</li>
+                                    <li><strong>Mixed-method approach</strong> - collected both behavioral data (login frequency, coin usage) and subjective questionnaire responses</li>
+                                    <li>Considered <strong>differences between player types</strong> (core, casual, non-gamers) and how reward effectiveness varies by user type</li>
+                                </ol>
+                            </div>
+                            <div class="bg-brand-pink border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">❌ What They Missed</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li>Does not measure <strong>real learning outcomes</strong> - focuses on engagement, not knowledge retention or transfer</li>
+                                    <li><strong>Timed quiz format</strong> (30 seconds/question) creates cognitive burden - doesn't explore lower-barrier interaction methods</li>
+                                    <li>Lacks discussion on <strong>externalized rewards vs. long-term motivation</strong> (overjustification effect not examined)</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Paper 4 -->
+                <details class="group bg-white border-4 border-black shadow-neo transform -rotate-1 hover:rotate-0 transition-transform">
+                    <summary class="cursor-pointer p-6 font-black text-xl hover:bg-gray-50 select-none flex items-center justify-between">
+                        <span class="flex items-center gap-3">
+                            <span class="bg-brand-accent text-white text-2xl px-3 py-1 border-2 border-black">04</span>
+                            <span>Does Gamification Work? A Literature Review of Empirical Studies</span>
+                        </span>
+                        <span class="text-brand-accent text-2xl transform group-open:rotate-45 transition-transform">+</span>
+                    </summary>
+                    <div class="px-6 pb-6 border-t-4 border-black">
+                        <p class="text-sm font-bold text-gray-700 mb-4 italic border-l-4 border-brand-green pl-3">
+                            DOI: 10.1109/HICSS.2014.377
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-brand-green border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">✅ What They Did Well</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li>Provides a <strong>systematic and reproducible literature review framework</strong> (motivational affordances → psychological outcomes → behavioral outcomes)</li>
+                                    <li>Classified <strong>24 empirical studies</strong> across 10 types of motivational affordances (points, leaderboards, badges, levels, story/theme)</li>
+                                    <li>Highlights <strong>context-dependent nature</strong> - effectiveness varies by use context and user type; education is common but effects not always positive</li>
+                                </ol>
+                            </div>
+                            <div class="bg-brand-pink border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">❌ What They Missed</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li>Focuses on <strong>surface-level elements</strong> (points, badges, leaderboards) - lacks deep analysis of narrative, role-playing, branching decisions</li>
+                                    <li>Doesn't clearly distinguish <strong>gamification vs. full game-based experiences</strong> - no analytical dimension for this continuum</li>
+                                    <li><strong>Limited discussion of long-term effects</strong> - doesn't explain mechanisms to avoid novelty decay or apply habit formation theory</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- Commercial Products -->
+        <div class="mb-16">
+            <h3 class="text-4xl font-black mb-8 font-display uppercase border-b-8 border-black pb-2 inline-block bg-brand-pink px-4 py-2 border-4 border-black shadow-neo transform rotate-1">💼 Commercial Products</h3>
+
+            <div class="space-y-6">
+                <!-- Product 1: AI Chatbots -->
+                <details class="group bg-white border-4 border-black shadow-neo transform -rotate-1 hover:rotate-0 transition-transform">
+                    <summary class="cursor-pointer p-6 font-black text-xl hover:bg-gray-50 select-none flex items-center justify-between">
+                        <span class="flex items-center gap-3">
+                            <span class="bg-brand-yellow text-black text-2xl px-3 py-1 border-2 border-black">01</span>
+                            <span>Generative AI Chatbots for Graduate School Advising</span>
+                        </span>
+                        <span class="text-brand-accent text-2xl transform group-open:rotate-45 transition-transform">+</span>
+                    </summary>
+                    <div class="px-6 pb-6 border-t-4 border-black">
+                        <p class="text-sm font-bold text-gray-700 mb-4 italic border-l-4 border-brand-green pl-3">
+                            Examples: ChatGPT, Gemini, DeepSeek — conversational AI agents for application advising
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-brand-green border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">✅ What They Did Well</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li><strong>Highly personalised advice</strong> - generates customised suggestions based on GPA, test scores, internship experience, target majors</li>
+                                    <li><strong>Strong interactivity</strong> through natural conversation with multi-turn dialogue for clarifying and refining needs</li>
+                                    <li><strong>Wide information integration</strong> - quickly summarises universities, deadlines, programmes, interview prep, personal statement ideas</li>
+                                </ol>
+                            </div>
+                            <div class="bg-brand-pink border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">❌ What They Missed</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li><strong>Reactive rather than proactive</strong> - users remain passive; lack clear overview of application journey and next steps</li>
+                                    <li><strong>No tracking of accumulated decision effects</strong> - decisions aren't transformed into trackable state variables showing long-term impact</li>
+                                    <li><strong>Lack sustained engagement mechanisms</strong> - no task completion marks, progress records, or cumulative feedback to encourage returns</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Product 2: Duolingo -->
+                <details class="group bg-white border-4 border-black shadow-neo transform rotate-1 hover:rotate-0 transition-transform">
+                    <summary class="cursor-pointer p-6 font-black text-xl hover:bg-gray-50 select-none flex items-center justify-between">
+                        <span class="flex items-center gap-3">
+                            <span class="bg-brand-yellow text-black text-2xl px-3 py-1 border-2 border-black">02</span>
+                            <span>Duolingo</span>
+                        </span>
+                        <span class="text-brand-accent text-2xl transform group-open:rotate-45 transition-transform">+</span>
+                    </summary>
+                    <div class="px-6 pb-6 border-t-4 border-black">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-brand-green border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">✅ What They Did Well</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li><strong>Strong habit-forming mechanism</strong> - streak system with psychological pressure to maintain; uses Streak Freeze, daily goals, notifications</li>
+                                    <li><strong>Multi-layered progress feedback</strong> - XP, levels, daily goals, skill progress, achievements create frequent short-term motivation</li>
+                                    <li><strong>Low-barrier fragmented learning</strong> - short lessons suitable for commuting, waiting, breaks; simple interactions (tap, match, fill, speak)</li>
+                                </ol>
+                            </div>
+                            <div class="bg-brand-pink border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">❌ What They Missed</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li><strong>Rewards remain virtual</strong> - gems, achievements, skins, streak records are app-locked; cannot exchange for real-world goods/services</li>
+                                    <li><strong>External motivation may weaken intrinsic motivation</strong> - shift from "I want to learn" to "I don't want to lose streak/drop rank"</li>
+                                    <li><strong>Less attractive for mid-late stage users</strong> - early leveling slows down; decorative rewards have limited appeal for goal-oriented learners</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Product 3: Notion -->
+                <details class="group bg-white border-4 border-black shadow-neo transform -rotate-1 hover:rotate-0 transition-transform">
+                    <summary class="cursor-pointer p-6 font-black text-xl hover:bg-gray-50 select-none flex items-center justify-between">
+                        <span class="flex items-center gap-3">
+                            <span class="bg-brand-yellow text-black text-2xl px-3 py-1 border-2 border-black">03</span>
+                            <span>Notion with Graduate School Application Templates</span>
+                        </span>
+                        <span class="text-brand-accent text-2xl transform group-open:rotate-45 transition-transform">+</span>
+                    </summary>
+                    <div class="px-6 pb-6 border-t-4 border-black">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-brand-green border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">✅ What They Did Well</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li><strong>Highly customisable timeline management</strong> - build databases for school lists, deadlines, documents, recommendations with multiple views (calendar, board, table)</li>
+                                    <li><strong>Rich template ecosystem</strong> - ready-made fields (school, programme, deadline, status, links) lower starting barrier</li>
+                                    <li><strong>Multi-dimensional information integration</strong> - centralises school research, personal statements, recommendations, test scores, files in one workspace</li>
+                                </ol>
+                            </div>
+                            <div class="bg-brand-pink border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">❌ What They Missed</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li><strong>Productivity tool without motivation design</strong> - no gamification, achievement systems, rewards, or emotional encouragement</li>
+                                    <li><strong>No visualisation of accumulated decision effects</strong> - cannot see how different school choices affect admission chances or workload</li>
+                                    <li><strong>Steep learning curve, high abandonment</strong> - users must learn databases, relations, formulas; many create templates but stop maintaining them</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Product 4: Reigns -->
+                <details class="group bg-white border-4 border-black shadow-neo transform rotate-1 hover:rotate-0 transition-transform">
+                    <summary class="cursor-pointer p-6 font-black text-xl hover:bg-gray-50 select-none flex items-center justify-between">
+                        <span class="flex items-center gap-3">
+                            <span class="bg-brand-yellow text-black text-2xl px-3 py-1 border-2 border-black">04</span>
+                            <span>Reigns</span>
+                        </span>
+                        <span class="text-brand-accent text-2xl transform group-open:rotate-45 transition-transform">+</span>
+                    </summary>
+                    <div class="px-6 pb-6 border-t-4 border-black">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-brand-green border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">✅ What They Did Well</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li><strong>Extremely simple intuitive interaction</strong> - swipe-left/swipe-right binary decision model; easy to understand, fast to use, mobile-friendly</li>
+                                    <li><strong>Clear state-balancing system</strong> - survive requests while balancing kingdom factions; each choice affects overall system state</li>
+                                    <li><strong>Replayability through short runs</strong> - failure becomes learning loop; roguelike structure encourages replaying, experimenting, understanding hidden logic</li>
+                                </ol>
+                            </div>
+                            <div class="bg-brand-pink border-2 border-black p-4 shadow-neo">
+                                <h4 class="font-black text-sm uppercase mb-3 border-b-2 border-black pb-1">❌ What They Missed</h4>
+                                <ol class="text-sm font-bold space-y-3 list-decimal list-inside">
+                                    <li><strong>Binary choices oversimplify complex planning</strong> - real study abroad prep involves time, academics, finance, documents, emotions; Reigns model needs adaptation</li>
+                                    <li><strong>Consequences intentionally opaque</strong> - trial-and-error fun, but for educational apps, students need to understand why decisions are good/bad</li>
+                                    <li><strong>No real educational outcomes connection</strong> - purely entertainment; lacks structured learning, application guidance, task tracking, actionable support</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- Our Opportunity Summary -->
+        <div class="mt-16 bg-brand-cyan border-4 border-black p-8 shadow-neo-lg transform -rotate-1">
+            <h3 class="text-3xl font-black mb-6 font-display uppercase border-b-4 border-black pb-2">🎯 Our Opportunity</h3>
+            <p class="text-black font-bold text-lg leading-relaxed mb-6">
+                The gap is clear: <strong class="bg-brand-yellow px-2 py-1 border-2 border-black shadow-neo-inline">No one combines gamification, real-world applicability, and emotional support</strong> in a single, accessible platform for study abroad preparation. There's also lack of system directly cooperating with school to provide specific help and track students' progress. 
+            </p>
+            <p class="text-black font-bold text-lg leading-relaxed">
+                Gradventure fills this by offering <span class="bg-brand-pink px-2 py-1 border-2 border-black shadow-neo-inline">Reigns-style decision gameplay</span> grounded in <span class="bg-brand-green px-2 py-1 border-2 border-black shadow-neo-inline">actual study abroad knowledge</span>, with <span class="bg-brand-accent px-2 py-1 border-2 border-black shadow-neo-inline text-white">playful UI that reduces anxiety</span>. It also directly cooperates with school department to offer tailored support for students on campus.
+            </p>
+        </div>
+    </Section>
 
     <Section title="Problem Space">
         <p class="text-xl text-black font-bold mb-8 max-w-3xl bg-brand-yellow p-4 border-4 border-black shadow-neo inline-block">

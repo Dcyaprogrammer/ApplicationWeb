@@ -29,9 +29,9 @@ const { title, subtitle, tag, primaryAction, secondaryAction } = Astro.props;
         <div class="absolute bottom-20 right-10 text-black font-black text-4xl">+</div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col justify-center min-h-[50vh]">
+    <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center justify-center min-h-[50vh] text-center">
         {tag && (
-            <div class="inline-block self-start border-4 border-black bg-brand-cyan px-4 py-2 mb-8 text-sm font-bold text-black tracking-widest uppercase shadow-neo transform -rotate-2">
+            <div class="inline-block border-4 border-black bg-brand-cyan px-4 py-2 mb-8 text-sm font-bold text-black tracking-widest uppercase shadow-neo transform -rotate-2">
                 {tag}
             </div>
         )}
@@ -41,7 +41,7 @@ const { title, subtitle, tag, primaryAction, secondaryAction } = Astro.props;
         <p class="text-xl md:text-2xl text-black font-bold max-w-3xl leading-relaxed mb-12 bg-white border-4 border-black p-6 shadow-neo inline-block transform rotate-1">
             {subtitle}
         </p>
-        <div class="flex flex-col sm:flex-row gap-6">
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
             {primaryAction && (
                 <a href={primaryAction.href} class="btn bg-brand-accent text-white hover:bg-white hover:text-black text-lg px-10 py-5 text-xl">
                     {primaryAction.text}

@@ -2,43 +2,545 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import Section from '../components/Section.astro';
+import ImageZoom from '../components/ImageZoom.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
-<Layout title="Prototypes | HCI Portfolio">
-    <PageHeader 
-        title="Prototypes" 
-        description="Interactive demonstrations of the application."
+<Layout title="Gradventure | Prototypes">
+    <PageHeader
+        title="Prototypes"
+        description="Technical architecture, prototypes, and system features."
     />
 
-    <Section title="Interactive Prototype">
-        <div class="w-full aspect-video bg-brand-yellow border-4 border-black flex flex-col items-center justify-center relative overflow-hidden group shadow-neo-lg transform -rotate-1 hover:rotate-0 transition-transform">
-             <div class="absolute inset-0 bg-grid-pattern"></div>
-            <span class="font-mono font-bold text-black text-2xl mb-8 bg-white border-4 border-black px-6 py-3 shadow-neo transform rotate-2 group-hover:-rotate-2 transition-transform">FIGMA_EMBED_OR_VIDEO</span>
-            <button class="btn btn-primary text-xl px-12 py-6 relative z-10 hover:bg-white hover:text-black">LAUNCH PROTOTYPE</button>
+    <!-- NEW SECTION: System Architecture -->
+    <Section title="System Architecture" class="bg-brand-cyan border-y-4 border-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern"></div>
+        <div class="relative z-10">
+            <div class="mb-12 bg-white p-6 border-4 border-black shadow-neo inline-block transform -rotate-1">
+                <p class="text-black text-xl font-bold leading-relaxed">
+                    Gradventure uses a <span class="bg-brand-yellow px-2 py-1 border-2 border-black shadow-neo-inline">modern full-stack architecture</span> with real-time data synchronization and responsive design for cross-device accessibility.
+                </p>
+            </div>
+
+            <!-- Technical Stack Overview -->
+            <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform rotate-1">
+                <h3 class="text-3xl font-black mb-6 font-display uppercase border-b-4 border-black pb-2 inline-block">🏗️ Technical Stack Overview</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Frontend -->
+                    <div class="bg-brand-yellow border-4 border-black p-6 shadow-neo transform -rotate-2">
+                        <h4 class="text-2xl font-black uppercase mb-4 border-b-4 border-black pb-2">Frontend (Client)</h4>
+                        <ul class="text-black font-bold space-y-3">
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">⚛️</span>
+                                <span>React 19 + TypeScript</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">🎨</span>
+                                <span>Tailwind CSS v4</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">📦</span>
+                                <span>Vite (Build Tool)</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">🎭</span>
+                                <span>Framer Motion</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">🗃️</span>
+                                <span>Zustand (State)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Backend -->
+                    <div class="bg-brand-pink border-4 border-black p-6 shadow-neo transform rotate-1">
+                        <h4 class="text-2xl font-black uppercase mb-4 border-b-4 border-black pb-2">Backend (BaaS)</h4>
+                        <ul class="text-black font-bold space-y-3">
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">🔥</span>
+                                <span>Supabase Platform</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">🔐</span>
+                                <span>Supabase Auth</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">🐘</span>
+                                <span>PostgreSQL Database</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">⚡</span>
+                                <span>Real-time Subscriptions</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">📡</span>
+                                <span>RESTful API</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Shared -->
+                    <div class="bg-brand-green border-4 border-black p-6 shadow-neo transform -rotate-1">
+                        <h4 class="text-2xl font-black uppercase mb-4 border-b-4 border-black pb-2">Shared (Game Logic)</h4>
+                        <ul class="text-black font-bold space-y-3">
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">🎮</span>
+                                <span>Custom Game Engine</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">🃏</span>
+                                <span>Card Runtime System</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">📊</span>
+                                <span>State Management</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">💾</span>
+                                <span>Local Storage Persistence</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">🔄</span>
+                                <span>Supabase Sync (Optional)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </Section>
 
-    <Section title="Key Features" class="bg-brand-pink border-y-4 border-black relative overflow-hidden">
+    <!-- Architecture Diagram & Data Flow Section -->
+    <Section title="System Architecture & Data Flow" class="bg-brand-orange border-y-4 border-black relative overflow-hidden">
         <div class="absolute inset-0 bg-grid-pattern"></div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
-            <div class="bg-white border-4 border-black p-8 shadow-neo transform rotate-1 hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-neo-none transition-all">
-                <h3 class="text-3xl font-black text-black mb-6 font-display uppercase border-b-4 border-black pb-2 inline-block">Gamified Dashboard</h3>
-                <p class="text-black font-bold text-lg mb-8 leading-relaxed border-l-4 border-brand-accent pl-4 py-1">
-                    Students can track their progress through levels, earning badges and rewards for completing tasks.
+        <div class="relative z-10">
+            <div class="mb-12 bg-white p-6 border-4 border-black shadow-neo inline-block transform -rotate-1">
+                <p class="text-black text-xl font-bold leading-relaxed">
+                    Visual overview of our system architecture and the data flow between components.
                 </p>
-                <div class="aspect-video bg-brand-cyan border-4 border-black shadow-neo flex items-center justify-center">
-                    <span class="text-black font-bold uppercase bg-white border-2 border-black px-2 py-1">Screenshot</span>
+            </div>
+
+            <!-- Architecture Diagram -->
+            <div class="bg-white border-4 border-black p-6 shadow-neo-lg transform rotate-1 mb-12">
+                <h3 class="text-2xl font-black mb-6 font-display uppercase border-b-4 border-black pb-2">📊 Architecture Diagram</h3>
+                <div class="bg-gray-100 border-4 border-black p-4 shadow-neo transform -rotate-1 relative overflow-hidden">
+                    <div class="max-w-3xl mx-auto">
+                        <ImageZoom
+                            src={`${base}architecture/architecture.png`}
+                            alt="Gradventure System Architecture Diagram"
+                            class="w-full h-auto object-contain border-2 border-black bg-white"
+                        />
+                    </div>
+                    <div class="absolute bottom-4 right-4 bg-brand-yellow border-2 border-black px-3 py-1 font-bold text-sm transform -rotate-2 z-20 pointer-events-none">
+                        CLICK TO ZOOM
+                    </div>
                 </div>
             </div>
-            <div class="bg-white border-4 border-black p-8 shadow-neo transform -rotate-1 hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-neo-none transition-all">
-                <h3 class="text-3xl font-black text-black mb-6 font-display uppercase border-b-4 border-black pb-2 inline-block">Interactive Map</h3>
-                <p class="text-black font-bold text-lg mb-8 leading-relaxed border-l-4 border-brand-yellow pl-4 py-1">
-                    A visual exploration tool for discovering universities and cultural information.
-                </p>
-                <div class="aspect-video bg-brand-green border-4 border-black shadow-neo flex items-center justify-center">
-                    <span class="text-black font-bold uppercase bg-white border-2 border-black px-2 py-1">Screenshot</span>
+
+            <!-- Data Flow -->
+            <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform -rotate-1">
+                <h3 class="text-2xl font-black mb-6 font-display uppercase border-b-4 border-black pb-2">🔄 Data Flow</h3>
+
+                <!-- Game Loop Badge -->
+                <div class="mb-8 flex justify-center">
+                    <div class="bg-black text-white border-4 border-brand-accent px-6 py-2 shadow-neo-lg transform -rotate-1 inline-block">
+                        <span class="font-black text-lg">🎮 Game Loop Until Game Over</span>
+                    </div>
+                </div>
+
+                <!-- Flow Diagram -->
+                <div class="relative">
+                    <!-- Main Flow -->
+                    <div class="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-4 mb-12">
+                        <!-- Step 1 -->
+                        <div class="flex flex-col items-center gap-3 flex-shrink-0">
+                            <div class="bg-brand-yellow border-3 border-black p-4 shadow-neo transform -rotate-2 hover:rotate-0 transition-transform w-48">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="bg-black text-white font-black text-lg px-2 py-1 border-2 border-white">01</span>
+                                    <span class="text-3xl">👆</span>
+                                </div>
+                                <p class="text-black font-black text-sm text-center leading-tight">User Swipe</p>
+                                <div class="mt-2 pt-2 border-t-2 border-black text-center">
+                                    <p class="text-xs font-bold text-gray-700">Left/Right Choice</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Arrow -->
+                        <div class="text-brand-accent text-3xl transform rotate-90 lg:rotate-0 flex-shrink-0">→</div>
+
+                        <!-- Step 2 -->
+                        <div class="flex flex-col items-center gap-3 flex-shrink-0">
+                            <div class="bg-brand-pink border-3 border-black p-4 shadow-neo transform rotate-2 hover:rotate-0 transition-transform w-48">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="bg-black text-white font-black text-lg px-2 py-1 border-2 border-white">02</span>
+                                    <span class="text-3xl">⚙️</span>
+                                </div>
+                                <p class="text-black font-black text-sm text-center leading-tight">Engine Process</p>
+                                <div class="mt-2 pt-2 border-t-2 border-black text-center">
+                                    <p class="text-xs font-bold text-gray-700">applyChoice()</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Arrow -->
+                        <div class="text-brand-accent text-3xl transform rotate-90 lg:rotate-0 flex-shrink-0">→</div>
+
+                        <!-- Step 3 -->
+                        <div class="flex flex-col items-center gap-3 flex-shrink-0">
+                            <div class="bg-brand-cyan border-3 border-black p-4 shadow-neo transform -rotate-1 hover:rotate-0 transition-transform w-48">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="bg-black text-white font-black text-lg px-2 py-1 border-2 border-white">03</span>
+                                    <span class="text-3xl">📊</span>
+                                </div>
+                                <p class="text-black font-black text-sm text-center leading-tight">State Update</p>
+                                <div class="mt-2 pt-2 border-t-2 border-black text-center">
+                                    <p class="text-xs font-bold text-gray-700">Stats/Flags/Day</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Arrow -->
+                        <div class="text-brand-accent text-3xl transform rotate-90 lg:rotate-0 flex-shrink-0">→</div>
+
+                        <!-- Step 4 -->
+                        <div class="flex flex-col items-center gap-3 flex-shrink-0">
+                            <div class="bg-brand-green border-3 border-black p-4 shadow-neo transform rotate-1 hover:rotate-0 transition-transform w-48">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="bg-black text-white font-black text-lg px-2 py-1 border-2 border-white">04</span>
+                                    <span class="text-3xl">🃏</span>
+                                </div>
+                                <p class="text-black font-black text-sm text-center leading-tight">Next Card</p>
+                                <div class="mt-2 pt-2 border-t-2 border-black text-center">
+                                    <p class="text-xs font-bold text-gray-700">drawNextCard()</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Arrow -->
+                        <div class="text-brand-accent text-3xl transform rotate-90 lg:rotate-0 flex-shrink-0">→</div>
+
+                        <!-- Step 5 -->
+                        <div class="flex flex-col items-center gap-3 flex-shrink-0">
+                            <div class="bg-[#A8A6FF] border-3 border-black p-4 shadow-neo transform -rotate-2 hover:rotate-0 transition-transform w-48" style="background-color: #A8A6FF;">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="bg-black text-white font-black text-lg px-2 py-1 border-2 border-white">05</span>
+                                    <span class="text-3xl">💾</span>
+                                </div>
+                                <p class="text-black font-black text-sm text-center leading-tight">UI + Storage</p>
+                                <div class="mt-2 pt-2 border-t-2 border-black text-center">
+                                    <p class="text-xs font-bold text-gray-700">Zustand + Local</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Loop Back Arrow -->
+                    <div class="flex justify-center my-8 relative">
+                        <div class="bg-brand-accent border-4 border-black px-6 py-3 shadow-neo-lg transform rotate-2 inline-block z-10">
+                            <div class="flex items-center gap-3">
+                                <span class="text-white font-black text-sm">Loop</span>
+                                <span class="text-white text-2xl">↻</span>
+                                <span class="text-white font-black text-sm">Check Game Over</span>
+                            </div>
+                        </div>
+                        <!-- Curved line connecting back -->
+                        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 hidden lg:block">
+                            <svg width="300" height="60" viewBox="0 0 300 60" class="overflow-visible">
+                                <path
+                                    d="M 150 60 Q 50 60 50 10"
+                                    stroke="#FF6B6B"
+                                    stroke-width="4"
+                                    fill="none"
+                                    stroke-dasharray="8,4"
+                                />
+                                <polygon points="50,10 40,20 50,30" fill="#FF6B6B" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parallel Operations -->
+                <div class="mt-8 bg-brand-yellow border-4 border-black p-6 shadow-neo transform rotate-1">
+                    <h4 class="text-lg font-black mb-4 uppercase border-b-4 border-black pb-2">⚡ Parallel Operations (Each Turn)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white border-4 border-black p-4 shadow-neo">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xl">🧮</span>
+                                <span class="font-black text-base">Game Over Check</span>
+                            </div>
+                            <p class="text-black font-bold text-xs">resolveStandardGameOver() checks GPA/Energy/Mentality/Experience conditions</p>
+                        </div>
+                        <div class="bg-white border-4 border-black p-4 shadow-neo">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xl">📜</span>
+                                <span class="font-black text-base">History Track</span>
+                            </div>
+                            <p class="text-black font-bold text-xs">Records statsBefore/After, choiceId, pressure changes</p>
+                        </div>
+                        <div class="bg-white border-4 border-black p-4 shadow-neo">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xl">🏷️</span>
+                                <span class="font-black text-base">Knowledge Tags</span>
+                            </div>
+                            <p class="text-black font-bold text-xs">Accumulates educationalTags from seen cards for Knowledge Base</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </Section>
+
+    <!-- Low-Fi Prototype Section -->
+    <Section title="Low-Fidelity Prototype" class="bg-brand-pink border-y-4 border-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern"></div>
+        <div class="relative z-10">
+            <div class="mb-12 bg-white p-6 border-4 border-black shadow-neo inline-block transform -rotate-1">
+                <p class="text-black text-xl font-bold leading-relaxed">
+                   Documenting our final design choices and core user flows before committing to visual details.
+                </p>
+            </div>
+
+            <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform rotate-1">
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <div class="w-full md:w-1/3">
+                        <h3 class="text-3xl font-black text-black mb-6 font-display uppercase border-b-4 border-black pb-2 inline-block">Low-Fidelity Wireframes</h3>
+                        <p class="text-black font-bold text-lg bg-brand-yellow border-2 border-black p-4 mb-6 shadow-neo transform -rotate-1">
+                            Initial structure and information architecture planning. We focused on the core user flows.
+                        </p>
+                        <ul class="text-black font-bold text-lg space-y-4 border-l-4 border-black pl-4">
+                            <li class="flex items-start gap-2"><span class="text-brand-accent text-2xl leading-none">→</span> Defined core navigation</li>
+                            <li class="flex items-start gap-2"><span class="text-brand-accent text-2xl leading-none">→</span> Mapped out the gamified dashboard</li>
+                            <li class="flex items-start gap-2"><span class="text-brand-accent text-2xl leading-none">→</span> Established content hierarchy</li>
+                        </ul>
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <div class="bg-gray-100 border-4 border-black relative overflow-hidden w-full shadow-neo transform rotate-1 group p-4">
+                            <ImageZoom
+                                src={`${base}lowfi.svg`}
+                                alt="Low-Fidelity Prototype from Excalidraw"
+                                class="w-full h-auto object-contain border-2 border-black bg-white"
+                            />
+                            <div class="absolute bottom-4 right-4 bg-brand-yellow border-2 border-black px-3 py-1 font-bold text-sm transform -rotate-2 z-20 pointer-events-none">
+                                CLICK TO ZOOM
+                            </div>
+                        </div>
+
+                        <!-- Excalidraw Link -->
+                        <div class="mt-4 text-center">
+                            <a
+                                href="https://excalidraw.com/#json=aCzTsHEvdUoqpbptOgmbG,A3INkKS6EiYCIsB12FycRA"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-block bg-brand-cyan border-4 border-black px-6 py-3 font-black text-lg shadow-neo transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-none transition-all"
+                            >
+                                🔗 View on Excalidraw
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Section>
+
+    <Section title="High-Fidelity Prototype">
+        <div class="w-full bg-brand-yellow border-4 border-black p-8 shadow-neo-lg transform -rotate-1 hover:rotate-0 transition-transform">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Left: Launch Button -->
+                <div class="flex flex-col items-center justify-center">
+                    <a
+                        href="https://gradventure-yijl.vercel.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="bg-brand-accent text-white border-4 border-black px-10 py-6 font-black text-2xl shadow-neo transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-none transition-all inline-block"
+                    >
+                        🚀 Launch App
+                    </a>
+                    <p class="text-black font-bold text-base mt-4 text-center">gradventure-yijl.vercel.app</p>
+                </div>
+
+                <!-- Right: QR Code -->
+                <div class="aspect-square bg-white border-4 border-black flex items-center justify-center relative overflow-hidden shadow-neo">
+                    <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                    <img
+                        src={`${base}app-qr.png`}
+                        alt="Scan to play Gradventure"
+                        class="w-3/4 h-3/4 object-contain relative z-10 hover:scale-105 transition-transform duration-300"
+                    />
+                    <div class="absolute bottom-4 bg-brand-yellow border-2 border-black px-3 py-1 font-bold text-sm transform -rotate-2 z-20">
+                        SCAN TO PLAY
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Section>
+
+    <!-- System Features Section -->
+    <Section title="System Features: From Design to Implementation" class="bg-brand-pink border-y-4 border-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern"></div>
+
+        <div class="relative z-10 mb-12">
+            <div class="bg-white p-6 border-4 border-black shadow-neo-lg transform -rotate-1 max-w-4xl">
+                <p class="text-black text-xl font-bold leading-relaxed mb-4">
+                    Our system features implement the <span class="bg-brand-cyan px-2 py-1 border-2 border-black shadow-neo-inline">3 design goals</span> through concrete technical solutions.
+                </p>
+                <p class="text-black font-bold text-lg">
+                    Each feature maps back to specific requirements, ensuring complete traceability from user needs to working code.
+                </p>
+            </div>
+        </div>
+
+        <div class="space-y-12 relative z-10">
+            <!-- System Feature 1 -->
+            <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform rotate-1 hover:rotate-0 transition-all">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="bg-brand-cyan text-black font-black text-4xl px-5 py-3 border-4 border-black shadow-neo flex-shrink-0 transform -rotate-3">
+                        SF1
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-3 flex-wrap">
+                            <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black">Implements [DG1] → [R1]</span>
+                            <span class="bg-brand-cyan text-black font-bold px-2 py-1 text-xs uppercase border-2 border-black">⚡ Short Sessions</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-3 font-display uppercase border-b-4 border-black pb-2">Card-Based Decision Engine</h3>
+                        <p class="text-black font-bold text-base leading-relaxed mb-4">
+                            Binary swipe interaction (left/right) with <span class="bg-brand-cyan px-2 py-1 border-2 border-black shadow-neo-inline">7-second average</span> decision time. Auto-saves after every card, enabling true pick-up-and-play gameplay.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-brand-yellow border-4 border-black p-3 shadow-neo transform -rotate-1">
+                                <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black mb-2 inline-block">Technical</span>
+                                <ul class="text-black font-bold text-sm space-y-1">
+                                    <li>→ Custom card runtime system</li>
+                                    <li>→ Swipe gesture detection</li>
+                                    <li>→ LocalStorage persistence</li>
+                                </ul>
+                            </div>
+                            <div class="bg-brand-green border-4 border-black p-3 shadow-neo transform rotate-1">
+                                <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black mb-2 inline-block">UX Outcome</span>
+                                <ul class="text-black font-bold text-sm space-y-1">
+                                    <li>→ Clear save/resume points</li>
+                                    <li>→ No long-term commitment</li>
+                                    <li>→ Fits fragmented schedules</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Feature 2 -->
+            <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform -rotate-1 hover:rotate-0 transition-all">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="bg-brand-pink text-white font-black text-4xl px-5 py-3 border-4 border-black shadow-neo flex-shrink-0 transform rotate-3">
+                        SF2
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-3 flex-wrap">
+                            <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black">Implements [DG2] → [R2]</span>
+                            <span class="bg-brand-pink text-black font-bold px-2 py-1 text-xs uppercase border-2 border-black">🔄 Feedback</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-3 font-display uppercase border-b-4 border-black pb-2">Dynamic State Visualization System</h3>
+                        <p class="text-black font-bold text-base leading-relaxed mb-4">
+                            Real-time stat preview <span class="bg-brand-pink px-2 py-1 border-2 border-black shadow-neo-inline">during swipe gesture</span> (not just after). Four tracked stats (GPA, Energy, Time, Stress) with visual feedback and multiple endings.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-brand-yellow border-4 border-black p-3 shadow-neo transform rotate-1">
+                                <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black mb-2 inline-block">Technical</span>
+                                <ul class="text-black font-bold text-sm space-y-1">
+                                    <li>→ Zustand state management</li>
+                                    <li>→ Live stat calculation</li>
+                                    <li>→ UI stress animations</li>
+                                </ul>
+                            </div>
+                            <div class="bg-brand-green border-4 border-black p-3 shadow-neo transform -rotate-1">
+                                <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black mb-2 inline-block">UX Outcome</span>
+                                <ul class="text-black font-bold text-sm space-y-1">
+                                    <li>→ Instant cause-effect learning</li>
+                                    <li>→ Mental model building</li>
+                                    <li>→ Multiple replayable endings</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Feature 3 -->
+            <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform rotate-1 hover:rotate-0 transition-all">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="bg-brand-yellow text-black font-black text-4xl px-5 py-3 border-4 border-black shadow-neo flex-shrink-0 transform -rotate-3">
+                        SF3
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-3 flex-wrap">
+                            <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black">Implements [DG3] → [R3]</span>
+                            <span class="bg-brand-yellow text-black font-bold px-2 py-1 text-xs uppercase border-2 border-black">🎓 Real-World Bridge</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-3 font-display uppercase border-b-4 border-black pb-2">Reward Ecosystem + Analytics Dashboard</h3>
+                        <p class="text-black font-bold text-base leading-relaxed mb-4">
+                            In-game currency redeemable for <span class="bg-brand-yellow px-2 py-1 border-2 border-black shadow-neo-inline">real school resources</span> (1-on-1 consultations, agent access). Teacher dashboard tracks student knowledge mastery and engagement.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-brand-purple border-4 border-black p-3 shadow-neo transform -rotate-1" style="background-color: #A8A6FF;">
+                                <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black mb-2 inline-block">Technical</span>
+                                <ul class="text-black font-bold text-sm space-y-1">
+                                    <li>→ Supabase PostgreSQL database</li>
+                                    <li>→ Teacher analytics dashboard</li>
+                                    <li>→ Reward redemption system</li>
+                                </ul>
+                            </div>
+                            <div class="bg-brand-green border-4 border-black p-3 shadow-neo transform rotate-1">
+                                <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black mb-2 inline-block">UX Outcome</span>
+                                <ul class="text-black font-bold text-sm space-y-1">
+                                    <li>→ Real preparation steps</li>
+                                    <li>→ School visibility into progress</li>
+                                    <li>→ Personalized recommendations</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complete Traceability Summary -->
+        <div class="mt-16 bg-black text-white border-4 border-white p-8 shadow-neo-lg relative z-10 transform -rotate-1">
+            <h4 class="text-3xl font-black uppercase mb-6 text-brand-yellow">✅ Complete Implementation Traceability</h4>
+            <div class="space-y-4">
+                <div class="flex items-center gap-4 flex-wrap bg-gray-900 p-4 border-2 border-brand-cyan">
+                    <span class="bg-brand-cyan text-black font-black px-4 py-2 text-lg border-4 border-white shadow-neo">[R1]</span>
+                    <span class="text-white font-bold">→</span>
+                    <span class="bg-gray-700 text-white font-bold px-4 py-2">[DG1]</span>
+                    <span class="text-white font-bold">→</span>
+                    <span class="bg-gray-700 text-white font-bold px-4 py-2">[SF1]</span>
+                    <span class="text-brand-cyan font-bold ml-auto">Card Engine ✓</span>
+                </div>
+                <div class="flex items-center gap-4 flex-wrap bg-gray-900 p-4 border-2 border-brand-pink">
+                    <span class="bg-brand-pink text-black font-black px-4 py-2 text-lg border-4 border-white shadow-neo">[R2]</span>
+                    <span class="text-white font-bold">→</span>
+                    <span class="bg-gray-700 text-white font-bold px-4 py-2">[DG2]</span>
+                    <span class="text-white font-bold">→</span>
+                    <span class="bg-gray-700 text-white font-bold px-4 py-2">[SF2]</span>
+                    <span class="text-brand-pink font-bold ml-auto">State System ✓</span>
+                </div>
+                <div class="flex items-center gap-4 flex-wrap bg-gray-900 p-4 border-2 border-brand-yellow">
+                    <span class="bg-brand-yellow text-black font-black px-4 py-2 text-lg border-4 border-white shadow-neo">[R3]</span>
+                    <span class="text-white font-bold">→</span>
+                    <span class="bg-gray-700 text-white font-bold px-4 py-2">[DG3]</span>
+                    <span class="text-white font-bold">→</span>
+                    <span class="bg-gray-700 text-white font-bold px-4 py-2">[SF3]</span>
+                    <span class="text-brand-yellow font-bold ml-auto">Rewards + Analytics ✓</span>
+                </div>
+            </div>
+            <p class="text-gray-300 font-bold text-base mt-6 border-t-2 border-gray-600 pt-4">
+                All requirements successfully implemented through design goals into working system features. See Evaluation section for validation results.
+            </p>
         </div>
     </Section>
 </Layout>

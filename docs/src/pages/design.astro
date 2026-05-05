@@ -7,11 +7,123 @@ import ImageZoom from '../components/ImageZoom.astro';
 const base = import.meta.env.BASE_URL;
 ---
 
-<Layout title="HCI Portfolio | Design Journey">
-    <PageHeader 
-        title="Design Journey" 
+<Layout title="Gradventure | Design">
+    <PageHeader
+        title="Design Journey"
         description="The evolution of our visual language, wireframes, and design iterations."
     />
+
+    <!-- Design Goals Section -->
+    <Section title="Design Goals: Translating Requirements into UX" class="bg-brand-green border-y-4 border-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern"></div>
+
+        <div class="relative z-10 mb-12">
+            <div class="bg-white p-6 border-4 border-black shadow-neo-lg transform -rotate-1 max-w-4xl">
+                <p class="text-black text-xl font-bold leading-relaxed mb-4">
+                    Our design goals translate the <span class="bg-brand-cyan px-2 py-1 border-2 border-black shadow-neo-inline">3 core requirements</span> into concrete user experience objectives.
+                </p>
+                <p class="text-black font-bold text-lg">
+                    Each goal addresses specific user needs and maps to system features that create measurable outcomes.
+                </p>
+            </div>
+        </div>
+
+        <div class="space-y-12 relative z-10">
+            <!-- Design Goal 1 -->
+            <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform rotate-1 hover:rotate-0 transition-all">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="bg-brand-cyan text-black font-black text-4xl px-5 py-3 border-4 border-black shadow-neo flex-shrink-0 transform -rotate-3">
+                        DG1
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black">Maps from [R1]</span>
+                            <span class="text-brand-ccent text-xl">⚡</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-3 font-display uppercase border-b-4 border-black pb-2">Support Fragmented Learning Patterns</h3>
+                        <p class="text-black font-bold text-base leading-relaxed mb-4">
+                            Accommodate busy students who study between classes, during commutes, or in spare moments. The experience must be <span class="bg-brand-cyan px-2 py-1 border-2 border-black shadow-neo-inline">pick-up-and-play</span> with minimal friction.
+                        </p>
+
+                        <div class="bg-brand-yellow border-4 border-black p-4 shadow-neo transform -rotate-1">
+                            <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black mb-2 inline-block">Target Users</span>
+                            <p class="text-black font-bold text-sm">Students with fragmented schedules who need learning in short bursts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design Goal 2 -->
+            <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform -rotate-1 hover:rotate-0 transition-all">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="bg-brand-pink text-white font-black text-4xl px-5 py-3 border-4 border-black shadow-neo flex-shrink-0 transform rotate-3">
+                        DG2
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black">Maps from [R2]</span>
+                            <span class="text-xl">🔄</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-3 font-display uppercase border-b-4 border-black pb-2">Build Intuitive Mental Models</h3>
+                        <p class="text-black font-bold text-base leading-relaxed mb-4">
+                            Help students understand <span class="bg-brand-pink px-2 py-1 border-2 border-black shadow-neo-inline">cause-effect relationships</span> in study abroad decisions through immediate visualization. Each interaction should reinforce understanding of how choices impact outcomes.
+                        </p>
+
+                        <div class="bg-brand-green border-4 border-black p-4 shadow-neo transform rotate-1">
+                            <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black mb-2 inline-block">Target Users</span>
+                            <p class="text-black font-bold text-sm">Students who need to understand complex application trade-offs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design Goal 3 -->
+            <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform rotate-1 hover:rotate-0 transition-all">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="bg-brand-yellow text-black font-black text-4xl px-5 py-3 border-4 border-black shadow-neo flex-shrink-0 transform -rotate-3">
+                        DG3
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black">Maps from [R3]</span>
+                            <span class="text-xl">🎓</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-3 font-display uppercase border-b-4 border-black pb-2">Enable School-Supported Preparation</h3>
+                        <p class="text-black font-bold text-base leading-relaxed mb-4">
+                            Transform game engagement into <span class="bg-brand-yellow px-2 py-1 border-2 border-black shadow-neo-inline">real-world preparation steps</span> backed by institutional resources. Schools should be able to track progress and provide personalized support.
+                        </p>
+
+                        <div class="bg-brand-purple border-4 border-black p-4 shadow-neo transform -rotate-1" style="background-color: #A8A6FF;">
+                            <span class="bg-black text-white font-bold px-2 py-1 text-xs uppercase border-2 border-black mb-2 inline-block">Target Users</span>
+                            <p class="text-black font-bold text-sm">Students & schools seeking actionable preparation pathways</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mapping Reference -->
+        <div class="mt-16 bg-brand-cyan border-4 border-black p-6 shadow-neo-lg relative z-10 transform rotate-1">
+            <h4 class="text-2xl font-black uppercase mb-4 text-black border-b-4 border-black pb-2">📍 Design-Requirements Mapping</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white border-4 border-black p-4 shadow-neo transform -rotate-1">
+                    <span class="bg-brand-cyan text-black font-bold px-2 py-1 text-sm border-2 border-black block mb-2 text-center">[DG1]</span>
+                    <p class="text-black font-bold text-sm text-center">Implements [R1]<br/>Short Sessions</p>
+                </div>
+                <div class="bg-white border-4 border-black p-4 shadow-neo transform rotate-1">
+                    <span class="bg-brand-pink text-black font-bold px-2 py-1 text-sm border-2 border-black block mb-2 text-center">[DG2]</span>
+                    <p class="text-black font-bold text-sm text-center">Implements [R2]<br/>Immediate Feedback</p>
+                </div>
+                <div class="bg-white border-4 border-black p-4 shadow-neo transform -rotate-2">
+                    <span class="bg-brand-yellow text-black font-bold px-2 py-1 text-sm border-2 border-black block mb-2 text-center">[DG3]</span>
+                    <p class="text-black font-bold text-sm text-center">Implements [R3]<br/>Real-World Prep</p>
+                </div>
+            </div>
+            <p class="text-black font-bold text-base mt-4 text-center">
+                See Prototypes section for how these goals translate into concrete system features.
+            </p>
+        </div>
+    </Section>
 
     <Section title="Crazy Eights Ideation" class="bg-brand-yellow border-b-4 border-black relative overflow-hidden">
         <div class="absolute inset-0 bg-grid-pattern"></div>
@@ -39,7 +151,7 @@ const base = import.meta.env.BASE_URL;
                             <span class="group-open:rotate-180 transition-transform">▼</span>
                         </summary>
                         <div class="mt-2 bg-white border-2 border-black p-3 text-xs font-medium leading-relaxed text-black">
-                            [1] Gemini Nano Banana, version 1.0, accessed on 2026-02-24, available at <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-pink hover:bg-black transition-colors break-all">https://gemini.google.com/</a>. Used for generating the conceptual sketches in the Crazy Eights figure.
+                            [1] Gemini 3.1 Pro, accessed on 2026-04-10, available at <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-pink hover:bg-black transition-colors break-all">https://gemini.google.com/</a>. Used for generating 6 concept photos during the Crazy 8s ideation session.
                         </div>
                     </details>
                 </div>
@@ -53,7 +165,7 @@ const base = import.meta.env.BASE_URL;
                     { id: 3, src: "crazy8/drawing.png", title: "Freehand Sketch" },
                     { id: 4, src: "crazy8/pixel.png", title: "Pixel Art Style" },
                     { id: 5, src: "crazy8/brutalism1.png", title: "Neo Brutalism" },
-                    { id: 6, src: "crazy8/brutalism2.png", title: "Neo Brutalism" },
+                    { id: 6, src: "crazy8/basic.png", title: "Basic Card Interface" },
                     { id: 7, src: "crazy8/cardwithrole.png", title: "Card With Figure" },
                     { id: 8, src: "crazy8/bird.png", title: "Bird" }
                 ].map((item, index) => (
@@ -81,6 +193,26 @@ const base = import.meta.env.BASE_URL;
     <Section title="Design Alternatives" class="bg-brand-cyan border-b-4 border-black relative overflow-hidden">
         <div class="absolute inset-0 bg-grid-pattern"></div>
         <div class="relative z-10">
+            <!-- AI Disclosure Badge -->
+            <div class="mb-8 bg-brand-pink p-4 border-4 border-black shadow-neo transform -rotate-1 max-w-md">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-2xl">🤖</span>
+                    <h4 class="font-black uppercase font-display border-b-2 border-black">AI Generation</h4>
+                </div>
+                <p class="text-black font-bold text-xs mb-3">The concept images for Quiz System and Map & Passport System were generated using AI tools.</p>
+
+                <!-- Native HTML details/summary for expandable accordion -->
+                <details class="group">
+                    <summary class="cursor-pointer bg-white border-2 border-black px-3 py-1 font-bold text-xs uppercase hover:bg-black hover:text-white transition-colors flex justify-between items-center select-none">
+                        <span>View Reference</span>
+                        <span class="group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="mt-2 bg-white border-2 border-black p-3 text-xs font-medium leading-relaxed text-black">
+                        [1] Google Gemini, accessed on 2026-05-05, available at <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-pink hover:bg-black transition-colors break-all">https://gemini.google.com/</a>. Used for generating the concept design images for the two design alternatives (Quiz System and Map & Passport System).
+                    </div>
+                </details>
+            </div>
+
             <div class="mb-12 bg-white p-6 border-4 border-black shadow-neo inline-block transform rotate-1">
                 <p class="text-black text-xl font-bold leading-relaxed">
                     Exploring different layout possibilities and interaction models based on our ideation sessions.
@@ -88,78 +220,183 @@ const base = import.meta.env.BASE_URL;
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-                <!-- Alternative A -->
+                <!-- Alternative A: Quiz System -->
                 <div class="bg-white border-4 border-black p-6 shadow-neo-lg transform -rotate-1">
                     <div class="flex items-center gap-4 mb-4 border-b-4 border-black pb-4">
                         <span class="bg-brand-pink text-black font-black text-3xl px-4 py-2 border-4 border-black shadow-neo">A</span>
-                        <h3 class="text-2xl font-black uppercase font-display">Alternative A</h3>
+                        <h3 class="text-2xl font-black uppercase font-display">Quiz System</h3>
                     </div>
+
+                    <!-- Concept Image -->
                     <div class="aspect-video bg-gray-100 border-4 border-black mb-4 relative overflow-hidden group">
-                        <ImageZoom 
-                            src={`${base}`} 
-                            alt="Design Alternative A" 
-                            class="w-full h-full object-cover"
+                        <ImageZoom
+                            src={`${base}designalternatives/quizsystem.png`}
+                            alt="Quiz System Design Alternative"
+                            class="w-full h-full object-contain bg-white"
                         />
+                        <div class="absolute bottom-4 right-4 bg-brand-yellow border-2 border-black px-3 py-1 font-bold text-sm transform -rotate-2 z-20 pointer-events-none">
+                            CLICK TO ZOOM
+                        </div>
                     </div>
-                    <ul class="text-black font-bold text-lg space-y-2 border-l-4 border-brand-pink pl-4">
-                        <li><span class="text-brand-pink text-xl">✓</span> Pro: Clear navigation</li>
-                        <li><span class="text-black text-xl">✗</span> Con: Takes up too much screen space</li>
-                    </ul>
+
+                    <!-- Description -->
+                    <div class="mb-4 bg-brand-pink border-4 border-black p-4 shadow-neo transform rotate-1">
+                        <h4 class="font-black text-lg uppercase mb-2">Concept Overview</h4>
+                        <p class="text-black font-bold text-base leading-relaxed">
+                            Simple quiz-based gameplay where students answer study abroad questions and receive immediate feedback with a summary and rewards upon completion.
+                        </p>
+                    </div>
+
+                    <!-- Pros & Cons -->
+                    <div class="mb-4 space-y-2">
+                        <ul class="text-black font-bold text-base space-y-2 border-l-4 border-brand-green pl-4 mb-3">
+                            <li><span class="text-brand-green text-lg">✓</span> <strong>Pro:</strong> Easy to understand, minimal learning curve</li>
+                            <li><span class="text-brand-green text-lg">✓</span> <strong>Pro:</strong> Direct knowledge delivery</li>
+                            <li><span class="text-brand-green text-lg">✓</span> <strong>Pro:</strong> Clear reward structure</li>
+                        </ul>
+                        <ul class="text-black font-bold text-base space-y-2 border-l-4 border-brand-pink pl-4">
+                            <li><span class="text-brand-pink text-lg">✗</span> <strong>Con:</strong> Limited engagement (one-time answers)</li>
+                            <li><span class="text-brand-pink text-lg">✗</span> <strong>Con:</strong> No narrative or progression</li>
+                            <li><span class="text-brand-pink text-lg">✗</span> <strong>Con:</strong> Feels like traditional education</li>
+                        </ul>
+                    </div>
+
+                    <!-- Rationale Space for Design Decision -->
+                    <div class="bg-gray-50 border-4 border-black p-4 shadow-neo-inner transform -rotate-1">
+                        <h4 class="font-black text-sm uppercase mb-2 border-b-2 border-black pb-1">🤔 Why Not This Approach?</h4>
+                        <div class="text-black font-medium text-sm leading-relaxed min-h-[120px] p-3 bg-white border-2 border-dashed border-gray-400">
+                            1. The traiditonal lacks immersion and context, while our solution provides a more engaging experience.
+                            2. The replayability for the quiz system is low, while our solution allows for repeated play with different outcomes(rougue-like experience).
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Alternative B -->
+                <!-- Alternative B: Map-Based Task System -->
                 <div class="bg-white border-4 border-black p-6 shadow-neo-lg transform rotate-1">
                     <div class="flex items-center gap-4 mb-4 border-b-4 border-black pb-4">
                         <span class="bg-brand-green text-black font-black text-3xl px-4 py-2 border-4 border-black shadow-neo">B</span>
-                        <h3 class="text-2xl font-black uppercase font-display">Alternative B</h3>
+                        <h3 class="text-2xl font-black uppercase font-display">Map-Based Task System</h3>
                     </div>
+
+                    <!-- Concept Image -->
                     <div class="aspect-video bg-gray-100 border-4 border-black mb-4 relative overflow-hidden group">
-                        <ImageZoom 
-                            src={`${base}`} 
-                            alt="Design Alternative B" 
-                            class="w-full h-full object-cover"
+                        <ImageZoom
+                            src={`${base}designalternatives/map.png`}
+                            alt="Map-Based System Design Alternative"
+                            class="w-full h-full object-contain bg-white"
                         />
+                        <div class="absolute bottom-4 right-4 bg-brand-yellow border-2 border-black px-3 py-1 font-bold text-sm transform -rotate-2 z-20 pointer-events-none">
+                            CLICK TO ZOOM
+                        </div>
                     </div>
-                    <ul class="text-black font-bold text-lg space-y-2 border-l-4 border-brand-green pl-4">
-                        <li><span class="text-brand-green text-xl">✓</span> Pro: Gamified elements are prominent</li>
-                        <li><span class="text-black text-xl">✗</span> Con: Learning curve is slightly steeper</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </Section>
 
-    <Section title="LowFi-Prototype" class="bg-brand-pink relative overflow-hidden">
-        <div class="absolute inset-0 bg-grid-pattern"></div>
-        <div class="relative z-10">
-            <div class="mb-12 bg-white p-6 border-4 border-black shadow-neo inline-block transform -rotate-1">
-                <p class="text-black text-xl font-bold leading-relaxed">
-                   Documenting our final design choices and core user flows before committing to visual details.
-                </p>
-            </div>
-
-            <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform rotate-1">
-                <div class="flex flex-col md:flex-row gap-8 items-start">
-                    <div class="w-full md:w-1/3">
-                        <h3 class="text-3xl font-black text-black mb-6 font-display uppercase border-b-4 border-black pb-2 inline-block">Low-Fidelity Wireframes</h3>
-                        <p class="text-black font-bold text-lg bg-brand-yellow border-2 border-black p-4 mb-6 shadow-neo transform -rotate-1">
-                            Initial structure and information architecture planning. We focused on the core user flows.
+                    <!-- Description -->
+                    <div class="mb-4 bg-brand-green border-4 border-black p-4 shadow-neo transform -rotate-1">
+                        <h4 class="font-black text-lg uppercase mb-2">Concept Overview</h4>
+                        <p class="text-black font-bold text-base leading-relaxed">
+                            Interactive map with location-specific tasks (e.g., essay writing at library). Completed tasks earn passport stamps redeemable for real-world rewards.
                         </p>
-                        <ul class="text-black font-bold text-lg space-y-4 border-l-4 border-black pl-4">
-                            <li class="flex items-start gap-2"><span class="text-brand-accent text-2xl leading-none">→</span> Defined core navigation</li>
-                            <li class="flex items-start gap-2"><span class="text-brand-accent text-2xl leading-none">→</span> Mapped out the gamified dashboard</li>
-                            <li class="flex items-start gap-2"><span class="text-brand-accent text-2xl leading-none">→</span> Established content hierarchy</li>
+                    </div>
+
+                    <!-- Pros & Cons -->
+                    <div class="mb-4 space-y-2">
+                        <ul class="text-black font-bold text-base space-y-2 border-l-4 border-brand-green pl-4 mb-3">
+                            <li><span class="text-brand-green text-lg">✓</span> <strong>Pro:</strong> Visual, exploration-based gameplay</li>
+                            <li><span class="text-brand-green text-lg">✓</span> <strong>Pro:</strong> Tangible progress (passport stamps)</li>
+                            <li><span class="text-brand-green text-lg">✓</span> <strong>Pro:</strong> Clear real-world connection</li>
+                        </ul>
+                        <ul class="text-black font-bold text-base space-y-2 border-l-4 border-brand-pink pl-4">
+                            <li><span class="text-brand-pink text-lg">✗</span> <strong>Con:</strong> Requires significant content creation</li>
+                            <li><span class="text-brand-pink text-lg">✗</span> <strong>Con:</strong> Complex navigation for mobile</li>
+                            <li><span class="text-brand-pink text-lg">✗</span> <strong>Con:</strong> Tasks may feel like "homework"</li>
                         </ul>
                     </div>
-                    <div class="w-full md:w-2/3">
-                        <div class="bg-gray-100 border-4 border-black relative overflow-hidden w-full shadow-neo transform rotate-1 group p-4">
-                            <ImageZoom 
-                                src={`${base}lowfi.svg`} 
-                                alt="Low-Fidelity Prototype from Excalidraw" 
-                                class="w-full h-auto object-contain border-2 border-black bg-white"
-                            />
-                            <div class="absolute bottom-4 right-4 bg-brand-yellow border-2 border-black px-3 py-1 font-bold text-sm transform -rotate-2 z-20 pointer-events-none">
-                                CLICK TO ZOOM
+
+                    <!-- Rationale Space for Design Decision -->
+                    <div class="bg-gray-50 border-4 border-black p-4 shadow-neo-inner transform rotate-1">
+                        <h4 class="font-black text-sm uppercase mb-2 border-b-2 border-black pb-1">🤔 Why Not This Approach?</h4>
+                        <div class="text-black font-medium text-sm leading-relaxed min-h-[120px] p-3 bg-white border-2 border-dashed border-gray-400">
+                            1. The map-based system may be too complex and overwhelming for students with fragmented schedules, while our solution offers a more streamlined and accessible experience.
+                            2. It works poor on mobile devices
+                            3. It's a linear and predictable experience, while our solution provides more variety and replayability through its rogue-like card system.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chosen Approach Section -->
+            <div class="bg-brand-yellow border-4 border-black p-8 shadow-neo-lg transform -rotate-1 relative z-10">
+                <h3 class="text-3xl font-black mb-6 font-display uppercase border-b-4 border-black pb-2 inline-block">✅ Our Final Choice: Reigns-Style Card System</h3>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-black uppercase mb-3">Why We Chose Differently</h4>
+                    <p class="text-black font-bold text-base leading-relaxed mb-4">
+                        After evaluating both alternatives, we chose to continue with this approach: a <span class="bg-brand-pink px-2 py-1 border-2 border-black shadow-neo-inline">rogue-like card-based system</span> inspired by the game <em>Reigns</em>.
+                    </p>
+                </div>
+
+                <!-- How It Addresses R1-R3 -->
+                <div class="bg-white border-4 border-black p-6 shadow-neo transform rotate-1 mb-6">
+                    <h4 class="text-xl font-black uppercase mb-4 border-b-4 border-black pb-2">🎯 How It Addresses Our Requirements</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <span class="bg-brand-cyan text-black font-black px-3 py-1 text-sm border-2 border-black flex-shrink-0">[R1]</span>
+                            <div>
+                                <h5 class="font-black text-lg mb-1">Fragmented-Time-Friendly ✓</h5>
+                                <p class="text-black font-bold text-sm">Each card takes 5-10 seconds to decide. Auto-save after every card means students can play 1 card or 20 cards—perfect for 2-3 minute sessions between classes.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="bg-brand-pink text-white font-black px-3 py-1 text-sm border-2 border-black flex-shrink-0">[R2]</span>
+                            <div>
+                                <h5 class="font-black text-lg mb-1">Immediate Feedback Loops ✓</h5>
+                                <p class="text-black font-bold text-sm">Real-time stat preview during swipe gesture shows consequences BEFORE decision. Visual feedback animations reinforce learning. Players build mental models quickly.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="bg-brand-yellow text-black font-black px-3 py-1 text-sm border-2 border-black flex-shrink-0">[R3]</span>
+                            <div>
+                                <h5 class="font-black text-lg mb-1">Real-World Bridge ✓</h5>
+                                <p class="text-black font-bold text-sm">In-game currency redeemable for real school resources (1-on-1 consultations, agent access). Teacher dashboard tracks knowledge mastery to provide personalized support.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparison with Alternatives -->
+                <div class="bg-white border-4 border-black p-6 shadow-neo transform -rotate-1">
+                    <h4 class="text-xl font-black uppercase mb-4 border-b-4 border-black pb-2">💡 Why Card System Beats Alternatives</h4>
+
+                    <div class="space-y-6">
+                        <!-- vs Quiz System -->
+                        <div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="bg-brand-cyan text-black font-bold px-3 py-1 text-sm uppercase border-2 border-black">vs Quiz System</span>
+                                <span class="text-black font-bold text-lg">More Engaging + Replayable</span>
+                            </div>
+                            <div class="bg-gray-50 border-4 border-black p-4">
+                                <ul class="text-black font-bold text-base space-y-2">
+                                    <li>→ <strong>Narrative immersion</strong>: Students experience a 3-year journey, not isolated Q&A</li>
+                                    <li>→ <strong>Rogue-like replayability</strong>: Different card combinations create unique runs—students want to replay to see alternative outcomes</li>
+                                    <li>→ <strong>Emotional engagement</strong>: Resource management (GPA, Energy, Time, Stress) creates tension and investment in results</li>
+                                    <li>→ <strong>Cause-effect learning</strong>: Every decision has visible trade-offs, building intuition about real study abroad choices</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- vs Map System -->
+                        <div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="bg-brand-green text-black font-bold px-3 py-1 text-sm uppercase border-2 border-black">vs Map & Passport</span>
+                                <span class="text-black font-bold text-lg">Simpler + Mobile-Friendly</span>
+                            </div>
+                            <div class="bg-gray-50 border-4 border-black p-4">
+                                <ul class="text-black font-bold text-base space-y-2">
+                                    <li>→ <strong>Fragmented time fit</strong>: One card = 5-10 seconds. Map exploration requires longer sessions—doesn't fit [R1]</li>
+                                    <li>→ <strong>Mobile-optimized</strong>: Simple swipe gesture works perfectly on phones. Map navigation is complex on small screens</li>
+                                    <li>→ <strong>Dynamic not linear</strong>: Card order changes each playthrough. Map tasks are fixed and predictable</li>
+                                    <li>→ <strong>No "homework" feeling</strong>: Quick decisions feel like gameplay, not doing assignments. Map tasks feel like to-do lists</li>
+                                </ul>
                             </div>
                         </div>
                     </div>

@@ -7,18 +7,21 @@ import ImageZoom from '../components/ImageZoom.astro';
 const base = import.meta.env.BASE_URL;
 ---
 
-<Layout title="HCI Portfolio | User Research">
+<Layout title="Gradventure | Research">
     <PageHeader 
         title="User Research" 
         description="Understanding our users through surveys, interviews, and journey mapping."
     />
 
+    <!-- Stakeholder Consultation -->
     <Section title="Stakeholder Consultation" class="bg-brand-pink border-y-4 border-black relative overflow-hidden">
         <div class="absolute inset-0 bg-grid-pattern"></div>
-        <div class="border-4 border-black bg-white p-8 shadow-neo relative z-10 transform -rotate-1 hover:rotate-0 transition-transform">
+
+        <!-- Interview 1: SAT Instructor -->
+        <div class="border-4 border-black bg-white p-8 shadow-neo relative z-10 transform -rotate-1 hover:rotate-0 transition-transform mb-12">
             <div class="flex items-center gap-4 mb-6 border-b-4 border-black pb-4">
                 <span class="text-4xl">💬</span>
-                <h3 class="text-3xl font-black text-black font-display uppercase">Interview with SAT Course Instructor</h3>
+                <h3 class="text-3xl font-black text-black font-display uppercase">Interview 1: SAT Course Instructor</h3>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -26,60 +29,283 @@ const base = import.meta.env.BASE_URL;
                 <div>
                     <div class="mb-6">
                         <span class="inline-block bg-black text-white font-bold px-2 py-1 mb-2 uppercase border-2 border-black">WHO</span>
-                        <p class="text-black font-bold text-xl border-l-4 border-brand-accent pl-4">SAT Course Instructor</p>
+                        <p class="text-black font-bold text-xl border-l-4 border-brand-accent pl-4">SAT Course Instructor at Education Agency</p>
                     </div>
-                    <div>
+                    <div class="mb-6">
                         <span class="inline-block bg-black text-white font-bold px-2 py-1 mb-2 uppercase border-2 border-black">TOPIC</span>
                         <p class="text-black font-bold text-xl border-l-4 border-brand-yellow pl-4">Feasibility discussion and gamification strategy</p>
                     </div>
+                    <div>
+                        <span class="inline-block bg-black text-white font-bold px-2 py-1 mb-2 uppercase border-2 border-black">DATE</span>
+                        <p class="text-black font-bold text-xl border-l-4 border-brand-green pl-4">March 15, 2025 | 45 minutes | In-person</p>
+                    </div>
                 </div>
 
-                <!-- Right: Key Finding -->
+                <!-- Right: Key Findings -->
                 <div class="bg-brand-yellow border-4 border-black p-6 shadow-neo transform rotate-1">
                     <div class="flex items-center gap-2 mb-4">
                         <span class="text-black text-2xl">✦</span>
-                        <span class="bg-black text-white font-bold px-2 py-1 uppercase text-sm border-2 border-black">KEY CONCEPT</span>
+                        <span class="bg-black text-white font-bold px-2 py-1 uppercase text-sm border-2 border-black">KEY INSIGHTS</span>
                     </div>
-                    <p class="text-black text-2xl font-black mb-4 font-display uppercase border-b-4 border-black pb-2">
-                        🎯 Level-Based Quiz System
-                    </p>
-                    <p class="text-black font-bold text-lg leading-relaxed">
-                        Progressive difficulty levels with reward unlocking mechanism.
-                        Players earn points through quiz challenges and unlock new content/rewards upon reaching score thresholds.
-                    </p>
+                    <ul class="text-black font-bold text-lg space-y-3">
+                        <li class="flex items-start gap-2">
+                            <span class="text-brand-accent text-xl">→</span>
+                            <span>Students are most engaged when <strong class="bg-white px-2 py-1 border-2 border-black shadow-neo-inline">immediate rewards</strong> follow their efforts</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-brand-accent text-xl">→</span>
+                            <span>The gamification system should support <strong class="bg-brand-cyan px-2 py-1 border-2 border-black shadow-neo-inline">fragmented time gameplay</strong> with short sessions, not long continuous flows</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-brand-accent text-xl">→</span>
+                            <span>The platform should <strong class="bg-brand-pink px-2 py-1 border-2 border-black shadow-neo-inline">bridge schools and students</strong>, enabling institutions to provide tangible support and resources</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </Section>
 
-    <Section title="Survey & Interview Results">
-        <div class="max-w-none mb-8 bg-brand-cyan p-6 border-4 border-black shadow-neo inline-block transform rotate-1 hover:rotate-0 transition-transform">
-            <p class="text-black text-xl font-bold leading-relaxed">
-                We conducted primary research to understand the pain points students face when planning to study abroad.
-                <span class="bg-black text-white px-2 py-1 ml-2 text-sm">(Content to be added...)</span>
-            </p>
+    <!-- Evidence of Life -->
+    <Section title="Evidence of Life: Field Research" class="bg-brand-yellow border-y-4 border-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern"></div>
+        <div class="relative z-10">
+            <div class="mb-12 bg-white p-6 border-4 border-black shadow-neo inline-block transform -rotate-1">
+                <p class="text-black text-xl font-bold leading-relaxed">
+                    Conducted <span class="bg-brand-pink px-2 py-1 border-2 border-black shadow-neo">5 in-depth interviews</span> with <span class="bg-brand-cyan px-2 py-1 border-2 border-black shadow-neo">4 students</span> (all with study abroad application intent: 3 on-campus, 1 off-campus) and <span class="bg-brand-yellow px-2 py-1 border-2 border-black shadow-neo">1 faculty advisor</span>.
+                </p>
+            </div>
+
+            <!-- Informed Consent Notice -->
+            <div class="mb-8 bg-brand-green border-4 border-black p-4 shadow-neo-lg transform rotate-1 max-w-2xl mx-auto">
+                <div class="flex items-center gap-3">
+                    <span class="text-black text-3xl">✓</span>
+                    <div>
+                        <h4 class="text-xl font-black uppercase text-black">Informed Consent Obtained</h4>
+                        <p class="text-black font-bold text-base mt-1">All participants signed informed consent forms before interviews</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                {/* Photo 1: On-Campus Sophomore */}
+                <div class="bg-white border-4 border-black shadow-neo transform -rotate-2 hover:rotate-0 transition-all overflow-hidden">
+                    <div class="aspect-video bg-gray-100 relative group">
+                        <img src={`${base}interview/oncampussophomore.jpg`} alt="On-Campus Sophomore Interview" class="w-full h-full object-cover" />
+                        <div class="absolute bottom-2 left-2 bg-black text-white text-xs font-bold px-2 py-1 border-2 border-white shadow-neo">
+                            On-Campus Sophomore
+                        </div>
+                    </div>
+                    <div class="bg-brand-pink p-3 border-t-4 border-black">
+                        <p class="text-black font-bold text-xs uppercase">
+                            Interview with 2nd-year student planning study abroad application
+                        </p>
+                    </div>
+                </div>
+
+                {/* Photo 2: On-Campus Junior */}
+                <div class="bg-white border-4 border-black shadow-neo transform rotate-2 hover:rotate-0 transition-all overflow-hidden">
+                    <div class="aspect-video bg-gray-100 relative group">
+                        <img src={`${base}interview/oncampusjunior.jpg`} alt="On-Campus Junior Interview" class="w-full h-full object-cover" />
+                        <div class="absolute bottom-2 left-2 bg-black text-white text-xs font-bold px-2 py-1 border-2 border-white shadow-neo">
+                            On-Campus Junior
+                        </div>
+                    </div>
+                    <div class="bg-brand-pink p-3 border-t-4 border-black">
+                        <p class="text-black font-bold text-xs uppercase">
+                            Interview with 3rd-year student with application experience
+                        </p>
+                    </div>
+                </div>
+
+                {/* Photo 3: Off-Campus Junior */}
+                <div class="bg-white border-4 border-black shadow-neo transform rotate-2 hover:rotate-0 transition-all overflow-hidden">
+                    <div class="aspect-video bg-gray-100 relative group">
+                        <img src={`${base}interview/offcampusjunior.png`} alt="Off-Campus Junior Interview" class="w-full h-full object-cover" />
+                        <div class="absolute bottom-2 left-2 bg-black text-white text-xs font-bold px-2 py-1 border-2 border-white shadow-neo">
+                            Off-Campus Junior
+                        </div>
+                    </div>
+                    <div class="bg-brand-pink p-3 border-t-4 border-black">
+                        <p class="text-black font-bold text-xs uppercase">
+                            Interview with off-campus 3rd-year student
+                        </p>
+                    </div>
+                </div>
+
+                {/* Photo 4: Faculty Advisor */}
+                <div class="bg-white border-4 border-black shadow-neo transform -rotate-2 hover:rotate-0 transition-all overflow-hidden">
+                    <div class="aspect-video bg-gray-100 relative group">
+                        <img src={`${base}interview/teacher.jpg`} alt="Faculty Advisor Interview" class="w-full h-full object-cover" />
+                        <div class="absolute bottom-2 left-2 bg-black text-white text-xs font-bold px-2 py-1 border-2 border-white shadow-neo">
+                            Faculty Advisor
+                        </div>
+                    </div>
+                    <div class="bg-brand-pink p-3 border-t-4 border-black">
+                        <p class="text-black font-bold text-xs uppercase">
+                            Consultation with faculty advisor on student needs
+                        </p>
+                    </div>
+                </div>
+
+                {/* Photo 5: On-Campus Freshman */}
+                <div class="bg-white border-4 border-black shadow-neo transform -rotate-2 hover:rotate-0 transition-all overflow-hidden">
+                    <div class="aspect-video bg-gray-100 relative group">
+                        <img src={`${base}interview/oncampusfresh.jpg`} alt="On-Campus Freshman Interview" class="w-full h-full object-cover" />
+                        <div class="absolute bottom-2 left-2 bg-black text-white text-xs font-bold px-2 py-1 border-2 border-white shadow-neo">
+                            On-Campus Freshman
+                        </div>
+                    </div>
+                    <div class="bg-brand-pink p-3 border-t-4 border-black">
+                        <p class="text-black font-bold text-xs uppercase">
+                            Interview with 1st-year student exploring study abroad options
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-brand-cyan border-4 border-black p-6 shadow-neo-lg transform rotate-1">
+                <h4 class="text-2xl font-black uppercase mb-4 border-b-4 border-black pb-2 inline-block">📍 Research Participants</h4>
+                <ul class="text-black font-bold space-y-2">
+                    <li>→ On-campus students: Sophomore, Junior, Freshman (3 interviews)</li>
+                    <li>→ Off-campus student: Junior (1 interview)</li>
+                    <li>→ Faculty advisor: Study abroad program coordinator (1 interview)</li>
+                </ul>
+            </div>
         </div>
     </Section>
 
-    <Section title="Key Requirements" class="bg-brand-green border-y-4 border-black relative overflow-hidden">
+    <!-- Key Requirements: The "Playful" Must-Haves -->
+    <Section title="Key Requirements: What Makes Gradventure Playful?" class="bg-brand-green border-y-4 border-black relative overflow-hidden">
         <div class="absolute inset-0 bg-grid-pattern"></div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
-            <div class="bg-white border-4 border-black p-8 shadow-neo transform -rotate-1 hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-neo-none transition-all">
-                <h3 class="text-3xl font-black mb-6 font-display uppercase border-b-4 border-black pb-2 inline-block">From Users</h3>
-                <ul class="text-black font-bold text-lg space-y-4">
-                    <li class="flex items-start gap-2"><span class="text-brand-accent text-2xl leading-none">→</span> (Requirement 1)</li>
-                    <li class="flex items-start gap-2"><span class="text-brand-accent text-2xl leading-none">→</span> (Requirement 2)</li>
-                    <li class="flex items-start gap-2"><span class="text-brand-accent text-2xl leading-none">→</span> (Requirement 3)</li>
-                </ul>
+
+        <div class="relative z-10 mb-12">
+            <div class="bg-brand-yellow border-4 border-black p-6 shadow-neo-lg transform -rotate-1 max-w-4xl">
+                <p class="text-black text-xl font-bold leading-relaxed mb-4">
+                    Based on our research, we identified <span class="bg-black text-white px-2 py-1 border-2 border-white shadow-neo-inline">3 core requirements</span> that make Gradventure genuinely playful—not just "game-like" in appearance, but in experience.
+                </p>
+                <p class="text-black font-bold text-lg">
+                    Each requirement maps to specific design goals and system features, ensuring traceability from user needs to implementation.
+                </p>
             </div>
-            <div class="bg-white border-4 border-black p-8 shadow-neo transform rotate-1 hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-neo-none transition-all">
-                <h3 class="text-3xl font-black mb-6 font-display uppercase border-b-4 border-black pb-2 inline-block">From Stakeholders</h3>
-                <ul class="text-black font-bold text-lg space-y-4">
-                    <li class="flex items-start gap-2"><span class="text-brand-pink text-2xl leading-none">→</span> (Requirement 1)</li>
-                    <li class="flex items-start gap-2"><span class="text-brand-pink text-2xl leading-none">→</span> (Requirement 2)</li>
-                    <li class="flex items-start gap-2"><span class="text-brand-pink text-2xl leading-none">→</span> (Requirement 3)</li>
-                </ul>
+        </div>
+
+        <div class="space-y-12 relative z-10">
+            <!-- Requirement 1 -->
+            <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform rotate-1 hover:rotate-0 transition-all">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="bg-brand-cyan text-black font-black text-5xl px-6 py-4 border-4 border-black shadow-neo flex-shrink-0 transform -rotate-3">
+                        R1
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-black text-white font-bold px-3 py-1 text-sm uppercase border-2 border-black">Fragmented-Time-Friendly</span>
+                            <span class="text-brand-ccent text-2xl">⚡</span>
+                        </div>
+                        <h3 class="text-3xl font-black mb-4 font-display uppercase border-b-4 border-black pb-2">Enable Short-Session Gameplay</h3>
+                        <p class="text-black font-bold text-lg leading-relaxed mb-6">
+                            The system must support learning in short bursts (<span class="bg-brand-cyan px-2 py-1 border-2 border-black shadow-neo-inline">2-3 minute sessions</span>) that fit into busy student schedules—between classes, during commutes, or in spare moments.
+                        </p>
+
+                        <div class="bg-brand-yellow border-4 border-black p-4 shadow-neo transform -rotate-1">
+                            <span class="bg-black text-white font-bold px-2 py-1 text-sm uppercase border-2 border-black mb-3 inline-block">Key Characteristics</span>
+                            <ul class="text-black font-bold text-base space-y-2">
+                                <li>→ Each interaction takes 5-10 seconds</li>
+                                <li>→ Clear save/resume points after every action</li>
+                                <li>→ No long-term commitment required to make progress</li>
+                                <li>→ Fits fragmented time patterns of student life</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- Requirement 2 -->
+            <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform -rotate-1 hover:rotate-0 transition-all">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="bg-brand-pink text-white font-black text-5xl px-6 py-4 border-4 border-black shadow-neo flex-shrink-0 transform rotate-3">
+                        R2
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-black text-white font-bold px-3 py-1 text-sm uppercase border-2 border-black">Immediate Feedback Loops</span>
+                            <span class="text-2xl">🔄</span>
+                        </div>
+                        <h3 class="text-3xl font-black mb-4 font-display uppercase border-b-4 border-black pb-2">Show Visible Consequences Instantly</h3>
+                        <p class="text-black font-bold text-lg leading-relaxed mb-6">
+                            Every action must have <span class="bg-brand-pink px-2 py-1 border-2 border-black shadow-neo-inline">immediately visible consequences</span>. Players should see the results of their decisions right away, creating a learning cycle where understanding improves with each interaction.
+                        </p>
+
+                        <div class="bg-brand-green border-4 border-black p-4 shadow-neo transform rotate-1">
+                            <span class="bg-black text-white font-bold px-2 py-1 text-sm uppercase border-2 border-black mb-3 inline-block">Key Characteristics</span>
+                            <ul class="text-black font-bold text-base space-y-2">
+                                <li>→ See stat changes DURING decision-making (not just after)</li>
+                                <li>→ Visual feedback animations for every action</li>
+                                <li>→ Clear cause-effect relationships</li>
+                                <li>→ Players build mental models through trial and error</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Requirement 3 -->
+            <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform rotate-1 hover:rotate-0 transition-all">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="bg-brand-yellow text-black font-black text-5xl px-6 py-4 border-4 border-black shadow-neo flex-shrink-0 transform -rotate-3">
+                        R3
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-black text-white font-bold px-3 py-1 text-sm uppercase border-2 border-black">Real-World Bridge</span>
+                            <span class="text-2xl">🎓</span>
+                        </div>
+                        <h3 class="text-3xl font-black mb-4 font-display uppercase border-b-4 border-black pb-2">Connect to School-Supported Preparation</h3>
+                        <p class="text-black font-bold text-lg leading-relaxed mb-6">
+                            The game must <span class="bg-brand-yellow px-2 py-1 border-2 border-black shadow-neo-inline">transform virtual achievements into real-world action</span>. Gameplay should lead to tangible preparation steps backed by school resources and support.
+                        </p>
+
+                        <div class="bg-brand-purple border-4 border-black p-4 shadow-neo transform -rotate-1" style="background-color: #A8A6FF;">
+                            <span class="bg-black text-white font-bold px-2 py-1 text-sm uppercase border-2 border-black mb-3 inline-block">Key Characteristics</span>
+                            <ul class="text-black font-bold text-base space-y-2">
+                                <li>→ In-game currency redeemable for real rewards (consultations, agent access)</li>
+                                <li>→ School tracks student knowledge mastery through gameplay data</li>
+                                <li>→ Game outcomes inform personalized preparation recommendations</li>
+                                <li>→ Seamless transition from game learning to real preparation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Traceability Overview -->
+        <div class="mt-16 bg-black text-white border-4 border-white p-8 shadow-neo-lg relative z-10 transform -rotate-1">
+            <h4 class="text-3xl font-black uppercase mb-6 text-brand-yellow">🔗 Traceability: From Requirements to Implementation</h4>
+            <div class="space-y-6">
+                <div class="flex items-center gap-4 flex-wrap">
+                    <span class="bg-brand-cyan text-black font-black px-4 py-2 border-4 border-white shadow-neo text-lg">[R1]</span>
+                    <span class="text-white font-bold text-xl">Short Sessions</span>
+                    <span class="text-brand-cyan text-2xl">→</span>
+                    <span class="bg-gray-800 text-white font-bold px-4 py-2 border-2 border-white">[DG1] → [SF1]</span>
+                </div>
+                <div class="flex items-center gap-4 flex-wrap">
+                    <span class="bg-brand-pink text-black font-black px-4 py-2 border-4 border-white shadow-neo text-lg">[R2]</span>
+                    <span class="text-white font-bold text-xl">Immediate Feedback</span>
+                    <span class="text-brand-pink text-2xl">→</span>
+                    <span class="bg-gray-800 text-white font-bold px-4 py-2 border-2 border-white">[DG2] → [SF2]</span>
+                </div>
+                <div class="flex items-center gap-4 flex-wrap">
+                    <span class="bg-brand-yellow text-black font-black px-4 py-2 border-4 border-white shadow-neo text-lg">[R3]</span>
+                    <span class="text-white font-bold text-xl">Real-World Preparation</span>
+                    <span class="text-brand-yellow text-2xl">→</span>
+                    <span class="bg-gray-800 text-white font-bold px-4 py-2 border-2 border-white">[DG3] → [SF3]</span>
+                </div>
+            </div>
+            <p class="text-gray-300 font-bold text-base mt-6 border-t-2 border-gray-600 pt-4">
+                Each requirement maps to specific design goals (DG) and system features (SF), ensuring every design decision traces back to identified user needs. See the Design and Prototypes sections for detailed implementation.
+            </p>
         </div>
     </Section>
 
