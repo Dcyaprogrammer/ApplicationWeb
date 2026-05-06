@@ -2,19 +2,48 @@ import { useGameStore } from '../store/gameStore';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
-const STORE_ITEMS = [
-  { id: 'resume_template', name: 'Resume Template', cost: 50, icon: '📄', desc: 'Boosts starting Experience slightly.' },
-  { id: 'coffee_pack', name: 'Energy Drink Pack', cost: 30, icon: '⚡', desc: 'Start with 10 extra Energy.' },
-  { id: 'tutor_session', name: 'Tutor Session', cost: 80, icon: '🧑‍🏫', desc: 'Start with 10 extra GPA.' },
-  { id: 'therapy_dog', name: 'Therapy Dog', cost: 100, icon: '🐕', desc: 'Start with 10 extra Mentality.' },
-  { id: 'vip_agency', name: 'VIP Agency Access', cost: 200, icon: '💼', desc: 'Unlock hidden Agency choices.' },
-  { id: 'skip_gre', name: 'GRE Exemption', cost: 300, icon: '📝', desc: 'Automatically pass language tests.' },
+type Category = 'souvenir' | 'food' | 'study';
+
+interface StoreItem {
+  id: string;
+  name: string;
+  cost: number;
+  icon: string;
+  desc: string;
+  category: Category;
+}
+
+const STORE_ITEMS: StoreItem[] = [
+  // Souvenirs
+  { id: 'xjtu_bear', name: 'XJTLU Bear', cost: 50, icon: '🧸', desc: 'Cute teddy bear as a memorable souvenir', category: 'souvenir' },
+  { id: 'elephant_dog', name: 'EE Dog', cost: 60, icon: '🐕', desc: 'Electrical Engineering mascot plush', category: 'souvenir' },
+  { id: 'programmer_plush', name: 'Code Monkey', cost: 70, icon: '🐵', desc: 'Programmer-themed plush toy', category: 'souvenir' },
+  { id: 'coffee_mug', name: 'Coffee Mug', cost: 40, icon: '☕', desc: 'Custom mug, practical and memorable', category: 'souvenir' },
+
+  // Food
+  { id: 'hotpot_4', name: 'DA Group - 4-Person Hotpot', cost: 150, icon: '🍲', desc: '4-person hotpot gathering meal', category: 'food' },
+  { id: 'hiking_6', name: 'DA Group - 6-Person Hiking', cost: 200, icon: '🏔️', desc: '6-person hiking activity, healthy outdoors', category: 'food' },
+  { id: 'garden_6', name: 'DA Group - 6-Person Garden Tour', cost: 180, icon: '🏞️', desc: '6-person garden tour, relax and unwind', category: 'food' },
+  { id: 'milk_tea', name: 'DA Special - Milk Tea', cost: 30, icon: '🧋', desc: 'Custom milk tea, sweet treat', category: 'food' },
+
+  // Learning
+  { id: 'consult_teacher', name: '1-on-1 Consultation - Teacher', cost: 250, icon: '👨‍🏫', desc: 'Personal consultation with study abroad advisor', category: 'study' },
+  { id: 'consult_mentor', name: '1-on-1 Consultation - Senior Mentor', cost: 200, icon: '👨‍🎓', desc: 'Personal guidance from senior student mentor', category: 'study' },
+];
+
+const CATEGORIES = [
+  { id: 'souvenir' as Category, name: 'Souvenirs', icon: '🎁' },
+  { id: 'food' as Category, name: 'Food', icon: '🍴' },
+  { id: 'study' as Category, name: 'Learning', icon: '📚' },
 ];
 
 export const StoreScreen = ({ onBack }: { onBack: () => void }) => {
   const { currency, spendCurrency } = useGameStore();
   const [purchased, setPurchased] = useState<Record<string, boolean>>({});
-  const [selectedItem, setSelectedItem] = useState<typeof STORE_ITEMS[0] | null>(null);
+  const [selectedItem, setSelectedItem] = useState<StoreItem | null>(null);
+  const [activeCategory, setActiveCategory] = useState<Category>('souvenir');
+
+  const filteredItems = STORE_ITEMS.filter(item => item.category === activeCategory);
 
   const handleBuy = (id: string, cost: number) => {
     if (purchased[id]) return;
@@ -31,34 +60,55 @@ export const StoreScreen = ({ onBack }: { onBack: () => void }) => {
 
       {/* Main Cabinet Frame */}
       <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col flex-1 max-h-[85vh] sm:max-h-[800px] mt-4 sm:mt-8 bg-[#FDF9F1] border-[4px] sm:border-[6px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] mr-2 sm:mr-auto mb-4 sm:mb-8 shrink-0">
-        
+
         {/* Header / Store Signboard */}
-        <div className="bg-black border-b-[4px] sm:border-b-[6px] border-black p-2 sm:p-5 sticky top-0 z-30 flex items-center justify-between shadow-[0px_4px_0px_0px_#FFE066] sm:shadow-[0px_6px_0px_0px_#FFE066] gap-2">
-          {/* Left spacer/button container to balance flex layout */}
-          <div className="flex-1 flex justify-start">
-            <button 
-              onClick={onBack}
-              className="bg-white text-black font-black text-[10px] sm:text-sm px-2 py-1 sm:px-3 sm:py-1.5 border-[2px] sm:border-[3px] border-black hover:bg-[#FFA6A6] hover:text-black transition-colors shadow-[2px_2px_0px_0px_#89CFF0] sm:shadow-[3px_3px_0px_0px_#89CFF0] hover:shadow-[2px_2px_0px_0px_#000] active:translate-y-0.5 active:translate-x-0.5 active:shadow-none flex items-center gap-1 transform -rotate-2 shrink-0"
-            >
-              <span>←</span> <span className="hidden sm:inline">EXIT</span>
-            </button>
-          </div>
-          
-          {/* Glitchy Title (Centered absolutely relative to parent, or by using flex-1 spacers) */}
-          <div className="relative flex-none flex justify-center overflow-hidden sm:overflow-visible mx-2">
-            <h1 className="text-lg sm:text-4xl font-black uppercase tracking-tighter text-white transform rotate-1 z-10 relative whitespace-nowrap">
-              BLACK MARKET
-            </h1>
-            <h1 className="text-lg sm:text-4xl font-black uppercase tracking-tighter text-[#FFB3D9] absolute top-[1px] sm:top-1 left-1/2 -translate-x-[49%] transform -rotate-1 z-0 whitespace-nowrap">
-              BLACK MARKET
-            </h1>
+        <div className="bg-black border-b-[4px] sm:border-b-[6px] border-black p-2 sm:p-3 sticky top-0 z-30 shadow-[0px_4px_0px_0px_#FFE066] sm:shadow-[0px_6px_0px_0px_#FFE066]">
+          {/* Top Row: Back Button + Title + Currency */}
+          <div className="flex items-center justify-between gap-2 mb-2">
+            {/* Left spacer/button container to balance flex layout */}
+            <div className="flex-1 flex justify-start">
+              <button
+                onClick={onBack}
+                className="bg-white text-black font-black text-[10px] sm:text-sm px-2 py-1 sm:px-3 sm:py-1.5 border-[2px] sm:border-[3px] border-black hover:bg-[#FFA6A6] hover:text-black transition-colors shadow-[2px_2px_0px_0px_#89CFF0] sm:shadow-[3px_3px_0px_0px_#89CFF0] hover:shadow-[2px_2px_0px_0px_#000] active:translate-y-0.5 active:translate-x-0.5 active:shadow-none flex items-center gap-1 transform -rotate-2 shrink-0"
+              >
+                <span>←</span> <span className="hidden sm:inline">EXIT</span>
+              </button>
+            </div>
+
+            {/* Glitchy Title (Centered) */}
+            <div className="relative flex-none flex justify-center overflow-visible mx-2 px-2">
+              <h1 className="text-lg sm:text-4xl font-black uppercase tracking-tighter text-white transform rotate-1 z-10 relative whitespace-nowrap">
+                SCHOOL REWARDS
+              </h1>
+              <h1 className="text-lg sm:text-4xl font-black uppercase tracking-tighter text-[#FFB3D9] absolute top-[1px] sm:top-1 left-1/2 -translate-x-[49%] transform -rotate-1 z-0 whitespace-nowrap">
+                SCHOOL REWARDS
+              </h1>
+            </div>
+
+            {/* Digital Currency Display (Right spacer) */}
+            <div className="flex-1 flex justify-end">
+              <div className="bg-black text-[#FFE066] border-[2px] sm:border-[3px] border-[#FFE066] px-2 py-1 sm:px-5 sm:py-2 font-black text-xs sm:text-xl shadow-[2px_2px_0px_0px_#FFE066] sm:shadow-[4px_4px_0px_0px_#FFE066] transform rotate-2 shrink-0">
+                <span className="text-white text-[10px] sm:text-sm mr-1 opacity-70">BAL</span>💰 {currency}
+              </div>
+            </div>
           </div>
 
-          {/* Digital Currency Display (Right spacer) */}
-          <div className="flex-1 flex justify-end">
-            <div className="bg-black text-[#FFE066] border-[2px] sm:border-[3px] border-[#FFE066] px-2 py-1 sm:px-5 sm:py-2 font-black text-xs sm:text-xl shadow-[2px_2px_0px_0px_#FFE066] sm:shadow-[4px_4px_0px_0px_#FFE066] transform rotate-2 shrink-0">
-              <span className="text-white text-[10px] sm:text-sm mr-1 opacity-70">BAL</span>💰 {currency}
-            </div>
+          {/* Category Tabs */}
+          <div className="flex justify-center gap-2">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`px-3 py-1.5 sm:px-6 sm:py-2 border-[2px] sm:border-[3px] border-black font-black text-[10px] sm:text-base uppercase tracking-wider transition-all transform shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] sm:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center gap-1.5 sm:gap-2 ${
+                  activeCategory === cat.id
+                    ? 'bg-[#89CFF0] text-black rotate-1'
+                    : 'bg-white text-black opacity-60 hover:opacity-100 -rotate-1 hover:rotate-0'
+                }`}
+              >
+                <span className="text-sm sm:text-lg">{cat.icon}</span>
+                <span>{cat.name}</span>
+              </button>
+            ))}
           </div>
         </div>
 
@@ -70,8 +120,8 @@ export const StoreScreen = ({ onBack }: { onBack: () => void }) => {
           <div className="absolute inset-0 pointer-events-none bg-white opacity-10" style={{ clipPath: 'polygon(80% 0, 95% 0, 85% 100%, 70% 100%)' }}></div>
 
           {/* Shelves Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-3 sm:gap-x-8 gap-y-6 sm:gap-y-12 content-start relative z-10">
-            {STORE_ITEMS.map((item, index) => {
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-x-3 sm:gap-x-8 gap-y-6 sm:gap-y-12 content-start relative z-10">
+            {filteredItems.map((item, index) => {
               const isBought = purchased[item.id];
               const canAfford = currency >= item.cost;
               const isEven = index % 2 === 0;
@@ -80,7 +130,7 @@ export const StoreScreen = ({ onBack }: { onBack: () => void }) => {
               return (
                 <div key={item.id} className="relative group pt-2 sm:pt-3 pr-2 sm:pr-3">
                   {/* Decorative Pop Shadow Layer behind item */}
-                  <div 
+                  <div
                     className={`absolute inset-0 mt-2 sm:mt-3 mr-2 sm:mr-3 transform translate-x-2 translate-y-2 sm:translate-x-3 sm:translate-y-3 transition-colors ${isBought ? 'bg-[#CCC]' : isUnaffordable ? 'bg-[#BDBDBD]' : 'bg-[#89CFF0]'}`}
                     style={{ clipPath: isEven ? 'polygon(2% 0, 100% 2%, 98% 100%, 0 98%)' : 'polygon(0 2%, 98% 0, 100% 98%, 2% 100%)' }}
                   ></div>
@@ -98,10 +148,10 @@ export const StoreScreen = ({ onBack }: { onBack: () => void }) => {
                   )}
 
                   {/* Physical Box/Item */}
-                  <motion.div 
+                  <motion.div
                     whileHover={!isBought ? { scale: 1.02, rotate: isEven ? -1 : 1, y: -2 } : {}}
                     className={`bg-white border-[3px] sm:border-[5px] border-black flex flex-col items-center p-3 sm:p-5 text-center relative z-10 h-full ${
-                      isBought ? 'opacity-60 grayscale' : isUnaffordable ? 'opacity-55 grayscale' : ''
+                      isUnaffordable ? 'opacity-55 grayscale' : ''
                     }`}
                     style={{ clipPath: isEven ? 'polygon(2% 0, 100% 2%, 98% 100%, 0 98%)' : 'polygon(0 2%, 98% 0, 100% 98%, 2% 100%)' }}
                     onClick={() => setSelectedItem(item)}
@@ -135,22 +185,20 @@ export const StoreScreen = ({ onBack }: { onBack: () => void }) => {
                         setSelectedItem(item);
                       }}
                       className={`w-full py-2 sm:py-3 border-[2px] sm:border-[4px] border-black font-black uppercase tracking-widest text-[10px] sm:text-xl transition-all transform ${
-                        isBought 
-                          ? 'bg-[#E5E5E5] text-black cursor-not-allowed rotate-0'
+                        isBought
+                          ? 'bg-[#89CFF0] text-black cursor-pointer hover:bg-[#FFE066] rotate-1'
                           : isUnaffordable
                             ? 'bg-[#E5E5E5] text-black opacity-90 -rotate-1'
                             : 'bg-black text-[#89CFF0] hover:bg-[#89CFF0] hover:text-black active:translate-y-1 rotate-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] sm:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]'
                       }`}
                     >
-                      {isBought ? 'OWNED' : isUnaffordable ? 'DETAILS' : 'DETAILS'}
+                      {isBought ? 'VIEW QR CODE' : isUnaffordable ? 'DETAILS' : 'DETAILS'}
                     </button>
 
-                    {/* Sold Out Stamp Overlay */}
+                    {/* Purchased Badge Overlay */}
                     {isBought && (
-                      <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
-                        <div className="bg-[#FFE066] text-black font-black text-2xl sm:text-5xl px-2 sm:px-4 py-1 sm:py-2 border-[3px] sm:border-[6px] border-black transform -rotate-12 shadow-[4px_4px_0px_0px_#000] sm:shadow-[6px_6px_0px_0px_#000]">
-                          SOLD OUT
-                        </div>
+                      <div className="absolute top-2 left-2 z-20 bg-[#89CFF0] text-black px-2 py-1 border-[2px] sm:border-[3px] border-black font-black text-[8px] sm:text-xs uppercase shadow-[2px_2px_0px_0px_#000] transform -rotate-2">
+                        ✅ Purchased
                       </div>
                     )}
                   </motion.div>
@@ -160,8 +208,7 @@ export const StoreScreen = ({ onBack }: { onBack: () => void }) => {
           </div>
 
           {/* Physical Shelf Lines (Decorative, sits under items) */}
-          <div className="absolute top-[320px] left-0 w-full h-[8px] bg-black shadow-[0px_10px_20px_rgba(0,0,0,0.8)] z-0 hidden md:block"></div>
-          <div className="absolute top-[660px] left-0 w-full h-[8px] bg-black shadow-[0px_10px_20px_rgba(0,0,0,0.8)] z-0 hidden md:block"></div>
+          <div className="absolute top-[280px] left-0 w-full h-[8px] bg-black shadow-[0px_10px_20px_rgba(0,0,0,0.8)] z-0 hidden md:block"></div>
         </div>
       </div>
 
@@ -204,52 +251,79 @@ export const StoreScreen = ({ onBack }: { onBack: () => void }) => {
                       style={{ clipPath: 'polygon(2% 0, 100% 2%, 98% 100%, 0 98%)' }}
                     >
                       <div className="text-center mt-4">
-                        <div className="text-6xl sm:text-7xl mb-4 bg-white w-24 h-24 mx-auto flex items-center justify-center rounded-full border-[4px] border-black shadow-[6px_6px_0px_0px_#D0BFFF]">
-                          {selectedItem.icon}
-                        </div>
-                        <h2 className="text-2xl sm:text-3xl font-black uppercase mb-4 leading-tight">
-                          {selectedItem.name}
-                        </h2>
-                        <div className="bg-[#FFE066] text-black p-4 mb-6 border-[3px] border-black transform rotate-1 shadow-[4px_4px_0px_0px_#000]">
-                          <p className="text-sm sm:text-base font-bold border-l-[4px] border-black pl-3 text-left leading-snug">
-                            {selectedItem.desc}
-                          </p>
-                        </div>
-
                         {isBought ? (
-                          <div className="bg-[#E5E5E5] text-black border-[3px] border-black p-3 mb-5 font-black shadow-[4px_4px_0px_0px_#000] uppercase">
-                            ✅ Already owned
-                          </div>
-                        ) : null}
+                          <>
+                            {/* QR Code Display for Purchased Items */}
+                            <div className="mb-6">
+                              <div className="bg-white border-[4px] border-black p-6 shadow-[4px_4px_0px_0px_#000] inline-block">
+                                {/* Simple QR Code Placeholder */}
+                                <div className="w-48 h-48 bg-white border-2 border-black flex items-center justify-center mb-4">
+                                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                                    {/* QR Code pattern */}
+                                    <rect x="10" y="10" width="20" height="20" fill="black"/>
+                                    <rect x="70" y="10" width="20" height="20" fill="black"/>
+                                    <rect x="10" y="70" width="20" height="20" fill="black"/>
+                                    <rect x="40" y="40" width="20" height="20" fill="black"/>
+                                    <rect x="70" y="70" width="20" height="20" fill="black"/>
+                                    {/* Random pattern */}
+                                    <rect x="35" y="15" width="5" height="5" fill="black"/>
+                                    <rect x="45" y="25" width="5" height="5" fill="black"/>
+                                    <rect x="15" y="45" width="5" height="5" fill="black"/>
+                                    <rect x="75" y="45" width="5" height="5" fill="black"/>
+                                    <rect x="45" y="75" width="5" height="5" fill="black"/>
+                                    <rect x="85" y="35" width="5" height="5" fill="black"/>
+                                    <rect x="25" y="85" width="5" height="5" fill="black"/>
+                                  </svg>
+                                </div>
+                                <p className="font-black text-sm uppercase mb-2">Show this QR code to redeem</p>
+                                <div className="bg-[#FFE066] border-[2px] border-black p-3 transform -rotate-1">
+                                  <p className="text-black font-black text-xs leading-tight">
+                                    ⚠️ Under Development - This QR code is not yet functional
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className="text-6xl sm:text-7xl mb-4 bg-white w-24 h-24 mx-auto flex items-center justify-center rounded-full border-[4px] border-black shadow-[6px_6px_0px_0px_#D0BFFF]">
+                              {selectedItem.icon}
+                            </div>
+                            <h2 className="text-2xl sm:text-3xl font-black uppercase mb-4 leading-tight">
+                              {selectedItem.name}
+                            </h2>
+                            <div className="bg-[#FFE066] text-black p-4 mb-6 border-[3px] border-black transform rotate-1 shadow-[4px_4px_0px_0px_#000]">
+                              <p className="text-sm sm:text-base font-bold border-l-[4px] border-black pl-3 text-left leading-snug">
+                                {selectedItem.desc}
+                              </p>
+                            </div>
+                          </>
+                        )}
 
                         <div className="flex gap-3 sm:gap-4">
                           <button
                             onClick={() => setSelectedItem(null)}
                             className="flex-1 py-3 border-[3px] sm:border-[4px] border-black font-black uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition-colors active:translate-y-1 transform -rotate-1 text-sm sm:text-base"
                           >
-                            CANCEL
+                            {isBought ? 'CLOSE' : 'CANCEL'}
                           </button>
-                          <button
-                            onClick={() => {
-                              if (isBought || isUnaffordable) return;
-                              handleBuy(selectedItem.id, selectedItem.cost);
-                              setSelectedItem(null);
-                            }}
-                            disabled={isBought || isUnaffordable}
-                            className={`flex-[1.5] py-3 border-[3px] sm:border-[4px] border-black font-black uppercase tracking-wider text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all transform rotate-1 text-sm sm:text-base ${
-                              isBought
-                                ? 'bg-[#E5E5E5] cursor-not-allowed opacity-90'
-                                : isUnaffordable
+                          {!isBought && (
+                            <button
+                              onClick={() => {
+                                if (isUnaffordable) return;
+                                handleBuy(selectedItem.id, selectedItem.cost);
+                                setSelectedItem(null);
+                              }}
+                              disabled={isUnaffordable}
+                              className={`flex-[1.5] py-3 border-[3px] sm:border-[4px] border-black font-black uppercase tracking-wider text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all transform rotate-1 text-sm sm:text-base ${
+                                isUnaffordable
                                   ? 'bg-[#BDBDBD] cursor-not-allowed opacity-90'
                                   : 'bg-[#89CFF0] hover:bg-[#FFE066] hover:text-black active:translate-y-1 active:shadow-none'
-                            }`}
-                          >
-                            {isBought
-                              ? 'OWNED'
-                              : isUnaffordable
-                                ? 'NOT ENOUGH 💰'
-                                : `PAY - ${selectedItem.cost}💰`}
-                          </button>
+                              }`}
+                            >
+                              {isUnaffordable ? 'NOT ENOUGH 💰' : `PAY - ${selectedItem.cost}💰`}
+                            </button>
+                          )}
                         </div>
                       </div>
                     </div>
