@@ -32,8 +32,10 @@ export const serializeRunState = (
   runId: string,
   state: RuntimeState,
   status: StoredRunRecord["status"] = "active",
+  userId?: string | null,
 ): StoredRunRecord => ({
-  id: runId,
+  ...(runId ? { id: runId } : {}),
+  user_id: userId ?? null,
   status,
   current_phase: state.currentPhase,
   current_day: state.currentDay,
@@ -55,7 +57,9 @@ export const deserializeRunState = (record: StoredRunRecord): RuntimeState => {
 export const serializeRunHistoryEntry = (
   runId: string,
   entry: RunHistoryEntry,
+  historyId?: string,
 ): StoredRunHistoryRecord => ({
+  ...(historyId ? { id: historyId } : {}),
   run_id: runId,
   card_id: entry.cardId,
   turn_index: entry.turnIndex,

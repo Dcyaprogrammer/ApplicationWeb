@@ -46,7 +46,16 @@ const RUN_HISTORY_KEY_PREFIX = "gradventure:run-history:";
 const canUseStorage = () =>
   typeof window !== "undefined" && typeof window.localStorage !== "undefined";
 
-const createRunId = () => `run_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+const createRecordId = (prefix: string) => {
+  const randomPart =
+    typeof crypto !== "undefined" && "randomUUID" in crypto
+      ? crypto.randomUUID()
+      : `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+
+  return `${prefix}_${randomPart}`;
+};
+
+const createRunId = () => createRecordId("run");
 
 export class LocalStorageRuntimePersistence implements RuntimePersistence {
   async createRun(initialState: RuntimeState): Promise<RunSnapshot> {
@@ -108,12 +117,14 @@ export class LocalStorageRuntimePersistence implements RuntimePersistence {
 interface SupabaseRuntimePersistenceOptions {
   runsTable?: string;
   runHistoryTable?: string;
+  userId?: string | null;
 }
 
 export class SupabaseRuntimePersistence implements RuntimePersistence {
   private readonly client: SupabaseClient;
   private readonly runsTable: string;
   private readonly runHistoryTable: string;
+  private readonly userId: string | null;
 
   constructor(
     client: SupabaseClient,
@@ -122,11 +133,12 @@ export class SupabaseRuntimePersistence implements RuntimePersistence {
     this.client = client;
     this.runsTable = options.runsTable ?? "runs";
     this.runHistoryTable = options.runHistoryTable ?? "run_card_history";
+    this.userId = options.userId ?? null;
   }
 
   async createRun(initialState: RuntimeState): Promise<RunSnapshot> {
-    const record = serializeRunState("", initialState, "active");
-    delete record.id;
+    const runId = createRunId();
+    const record = serializeRunState(runId, initialState, "active", this.userId);
 
     const { data, error } = await this.client
       .from(this.runsTable)
@@ -145,12 +157,15 @@ export class SupabaseRuntimePersistence implements RuntimePersistence {
   }
 
   async loadLatestRun(): Promise<RunSnapshot | null> {
-    const { data, error } = await this.client
+    let query = this.client
       .from(this.runsTable)
       .select("*")
       .order("updated_at", { ascending: false })
-      .limit(1)
-      .maybeSingle();
+      .limit(1);
+
+    query = this.userId ? query.eq("user_id", this.userId) : query.is("user_id", null);
+
+    const { data, error } = await query.maybeSingle();
 
     if (error) {
       throw error;
@@ -168,12 +183,16 @@ export class SupabaseRuntimePersistence implements RuntimePersistence {
   }
 
   async saveState(runId: string, state: RuntimeState): Promise<void> {
-    const record = serializeRunState(runId, state, "active");
+    const record = serializeRunState(runId, state, "active", this.userId);
 
-    const { error } = await this.client
+    let query = this.client
       .from(this.runsTable)
       .update(record)
       .eq("id", runId);
+
+    query = this.userId ? query.eq("user_id", this.userId) : query.is("user_id", null);
+
+    const { error } = await query;
 
     if (error) {
       throw error;
@@ -181,7 +200,7 @@ export class SupabaseRuntimePersistence implements RuntimePersistence {
   }
 
   async appendHistory(runId: string, entry: RunHistoryEntry): Promise<void> {
-    const record = serializeRunHistoryEntry(runId, entry);
+    const record = serializeRunHistoryEntry(runId, entry, createRecordId("history"));
     const { error } = await this.client.from(this.runHistoryTable).insert(record);
 
     if (error) {

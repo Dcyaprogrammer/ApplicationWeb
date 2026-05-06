@@ -1,35 +1,53 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthStore } from '../store/authStore';
-import { supabase } from '../utils/supabase';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const toErrorMessage = (error: unknown) =>
+  error instanceof Error ? error.message : String(error);
+
 export const AuthModal: React.FC = () => {
-  const { user, isAnonymous, initialize, isAuthModalOpen, setAuthModalOpen } = useAuthStore();
+  const {
+    user,
+    isAnonymous,
+    signInWithPassword,
+    signUpWithPassword,
+    isAuthModalOpen,
+    setAuthModalOpen,
+  } = useAuthStore();
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
   
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+
+  useEffect(() => {
+    if (isAuthModalOpen && user && !isAnonymous) {
+      setAuthModalOpen(false);
+    }
+  }, [isAuthModalOpen, isAnonymous, setAuthModalOpen, user]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
+    setNotice(null);
 
     try {
       if (isLogin) {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
+        await signInWithPassword(email, password);
       } else {
-        const { error } = await supabase.auth.signUp({ email, password });
-        if (error) throw error;
+        const result = await signUpWithPassword(email, password);
+        if (result.needsEmailConfirmation) {
+          setNotice('Check your email to confirm this account, then log in here.');
+          return;
+        }
       }
-      await initialize();
-      setAuthModalOpen(false); // Close modal on success
-    } catch (err: any) {
-      setError(err.message || 'Authentication failed');
+      setAuthModalOpen(false);
+    } catch (err) {
+      setError(toErrorMessage(err) || 'Authentication failed');
     } finally {
       setIsLoading(false);
     }
@@ -40,9 +58,7 @@ export const AuthModal: React.FC = () => {
     return null;
   }
 
-  // If fully authenticated user opens modal, just close it
   if (user && !isAnonymous) {
-    setAuthModalOpen(false);
     return null;
   }
 
@@ -131,6 +147,18 @@ export const AuthModal: React.FC = () => {
                   </div>
                 </motion.div>
               )}
+              {notice && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="overflow-hidden"
+                >
+                  <div className="bg-[#89CFF0] text-black border-[4px] border-black p-3 mb-6 font-black text-xs sm:text-sm shadow-[4px_4px_0px_0px_#FFE066] uppercase transform rotate-1 text-center tracking-widest">
+                    {notice}
+                  </div>
+                </motion.div>
+              )}
             </AnimatePresence>
 
             <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
@@ -182,6 +210,7 @@ export const AuthModal: React.FC = () => {
                 onClick={() => {
                   setIsLogin(!isLogin);
                   setError(null);
+                  setNotice(null);
                 }}
                 className="font-black text-xs sm:text-sm uppercase tracking-widest text-black hover:text-white hover:bg-black px-4 py-2 transition-all border-[3px] border-transparent hover:border-black transform rotate-1"
               >

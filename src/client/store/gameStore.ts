@@ -10,10 +10,13 @@ import {
   LocalStorageRuntimePersistence,
   LocalStorageCatalogSource,
   SupabaseCatalogSource,
+  SupabaseRuntimePersistence,
   type RuntimeCard,
+  type RuntimePersistence,
   type RuntimeState,
 } from "../../game/runtime";
 import { sanitizeEnvValue } from "../../shared/env";
+import { useAuthStore } from "./authStore";
 import { supabase } from "../utils/supabase";
 
 interface GameState {
@@ -55,13 +58,31 @@ interface GameState {
   restoreLatestRun: () => Promise<boolean>;
 }
 
-const persistence = new LocalStorageRuntimePersistence();
+const localPersistence = new LocalStorageRuntimePersistence();
+let activePersistence: RuntimePersistence = localPersistence;
+
+const hasSupabaseConfig = () =>
+  Boolean(sanitizeEnvValue(import.meta.env.VITE_SUPABASE_URL)) &&
+  Boolean(sanitizeEnvValue(import.meta.env.VITE_SUPABASE_ANON_KEY));
+
+const resolveRuntimePersistence = () => {
+  const { user, isAnonymous } = useAuthStore.getState();
+
+  if (user && !isAnonymous && hasSupabaseConfig()) {
+    return {
+      name: "supabase" as const,
+      persistence: new SupabaseRuntimePersistence(supabase, { userId: user.id }),
+    };
+  }
+
+  return {
+    name: "local" as const,
+    persistence: localPersistence,
+  };
+};
 
 const resolveCatalogSource = () => {
   const source = sanitizeEnvValue(import.meta.env.VITE_GAME_CATALOG_SOURCE) || "auto";
-  const hasSupabaseConfig =
-    Boolean(sanitizeEnvValue(import.meta.env.VITE_SUPABASE_URL)) &&
-    Boolean(sanitizeEnvValue(import.meta.env.VITE_SUPABASE_ANON_KEY));
 
   if (source === "supabase") {
     return {
@@ -77,7 +98,7 @@ const resolveCatalogSource = () => {
     };
   }
 
-  if (source === "auto" && hasSupabaseConfig) {
+  if (source === "auto" && hasSupabaseConfig()) {
     return {
       sourceName: "supabase" as const,
       source: new SupabaseCatalogSource(supabase),
@@ -191,9 +212,24 @@ export const useGameStore = create<GameState>((set, get) => ({
       hasSeenTutorial: false,
     });
 
-    void persistence.createRun(initialState).then((snapshot) => {
-      set({ runId: snapshot.runId });
-    });
+    const resolvedPersistence = resolveRuntimePersistence();
+    activePersistence = resolvedPersistence.persistence;
+
+    void activePersistence
+      .createRun(initialState)
+      .then((snapshot) => {
+        set({ runId: snapshot.runId });
+      })
+      .catch((error) => {
+        console.error(
+          `Failed to create ${resolvedPersistence.name} run, falling back to local storage.`,
+          error,
+        );
+        activePersistence = localPersistence;
+        void localPersistence.createRun(initialState).then((snapshot) => {
+          set({ runId: snapshot.runId });
+        });
+      });
   },
 
   makeChoice: (choice: CardChoice) => {
@@ -237,9 +273,13 @@ export const useGameStore = create<GameState>((set, get) => ({
     if (runId) {
       const latestEntry = result.nextState.history[result.nextState.history.length - 1];
       if (latestEntry) {
-        void persistence.appendHistory(runId, latestEntry);
+        void activePersistence.appendHistory(runId, latestEntry).catch((error) => {
+          console.error("Failed to append run history.", error);
+        });
       }
-      void persistence.saveState(runId, result.nextState);
+      void activePersistence.saveState(runId, result.nextState).catch((error) => {
+        console.error("Failed to save run state.", error);
+      });
     }
   },
 
@@ -281,7 +321,17 @@ export const useGameStore = create<GameState>((set, get) => ({
   completeTutorial: () => set({ hasSeenTutorial: true }),
 
   restoreLatestRun: async () => {
-    const snapshot = await persistence.loadLatestRun();
+    const resolvedPersistence = resolveRuntimePersistence();
+    activePersistence = resolvedPersistence.persistence;
+
+    let snapshot = await activePersistence.loadLatestRun();
+    if (!snapshot && resolvedPersistence.name === "supabase") {
+      snapshot = await localPersistence.loadLatestRun();
+      if (snapshot) {
+        activePersistence = localPersistence;
+      }
+    }
+
     if (!snapshot) {
       return false;
     }

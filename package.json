@@ -19,6 +19,7 @@
     "db:export:supabase": "bun run src/db/exportSupabaseSql.ts",
     "db:check:supabase": "bun run src/db/checkSupabase.ts",
     "db:check:supabase:catalog": "bun run src/db/checkSupabaseCatalog.ts",
+    "db:check:supabase:persistence": "bun run src/db/checkSupabasePersistence.ts",
     "api:example": "bun run src/api/example.ts",
     "server": "bun run src/server/index.ts",
     "api:dev": "bun --hot run src/server/index.ts"

@@ -6,6 +6,11 @@ import type { User, Session } from '@supabase/supabase-js';
 // In DEMO_MODE, users are automatically signed in anonymously
 export const IS_DEMO_MODE = import.meta.env.VITE_ENABLE_DEMO_MODE === 'true';
 
+let authSubscription: { unsubscribe: () => void } | null = null;
+
+const toErrorMessage = (error: unknown) =>
+  error instanceof Error ? error.message : String(error);
+
 interface AuthState {
   user: User | null;
   session: Session | null;
@@ -16,6 +21,8 @@ interface AuthState {
   
   // Actions
   initialize: () => Promise<void>;
+  signInWithPassword: (email: string, password: string) => Promise<void>;
+  signUpWithPassword: (email: string, password: string) => Promise<{ needsEmailConfirmation: boolean }>;
   signInAnonymously: (background?: boolean) => Promise<void>;
   signOut: () => Promise<void>;
   setAuthModalOpen: (isOpen: boolean) => void;
@@ -40,20 +47,21 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       
       if (error) throw error;
       
-      // Listen for auth changes
-      supabase.auth.onAuthStateChange((_event, currentSession) => {
-        set({ 
-          session: currentSession, 
-          user: currentSession?.user || null,
-          isAnonymous: currentSession?.user?.is_anonymous || false,
-          isLoading: false 
+      if (!authSubscription) {
+        const { data } = supabase.auth.onAuthStateChange((_event, currentSession) => {
+          set({ 
+            session: currentSession, 
+            user: currentSession?.user || null,
+            isAnonymous: currentSession?.user?.is_anonymous || false,
+            isLoading: false 
+          });
         });
-      });
 
-      // Handle Demo Mode Logic
+        authSubscription = data.subscription;
+      }
+
       if (IS_DEMO_MODE && !session) {
-        // If in demo mode and no active session, sign in silently in the background
-        set({ isLoading: false }); // Unblock UI immediately
+        set({ isLoading: false });
         get().signInAnonymously(true);
       } else {
         set({ 
@@ -63,9 +71,58 @@ export const useAuthStore = create<AuthState>((set, get) => ({
           isLoading: false 
         });
       }
-    } catch (error: any) {
-      set({ error: error.message, isLoading: false });
-      console.error('Auth initialization error:', error.message);
+    } catch (error) {
+      const message = toErrorMessage(error);
+      set({ error: message, isLoading: false });
+      console.error('Auth initialization error:', message);
+    }
+  },
+
+  signInWithPassword: async (email, password) => {
+    try {
+      set({ isLoading: true, error: null });
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+
+      if (error) throw error;
+
+      set({
+        user: data.user,
+        session: data.session,
+        isAnonymous: data.user?.is_anonymous || false,
+        isLoading: false,
+      });
+    } catch (error) {
+      const message = toErrorMessage(error);
+      set({ error: message, isLoading: false });
+      throw error;
+    }
+  },
+
+  signUpWithPassword: async (email, password) => {
+    try {
+      set({ isLoading: true, error: null });
+      const { data, error } = await supabase.auth.signUp({ email, password });
+
+      if (error) throw error;
+
+      const needsEmailConfirmation = Boolean(data.user && !data.session);
+      if (needsEmailConfirmation) {
+        set({ isLoading: false });
+        return { needsEmailConfirmation };
+      }
+
+      set({
+        user: data.user,
+        session: data.session,
+        isAnonymous: data.user?.is_anonymous || false,
+        isLoading: false,
+      });
+
+      return { needsEmailConfirmation };
+    } catch (error) {
+      const message = toErrorMessage(error);
+      set({ error: message, isLoading: false });
+      throw error;
     }
   },
 
@@ -84,9 +141,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       });
       
       console.log('Signed in anonymously with UID:', data.user?.id);
-    } catch (error: any) {
-      set({ error: error.message, ...(!background && { isLoading: false }) });
-      console.error('Anonymous sign-in error:', error.message);
+    } catch (error) {
+      const message = toErrorMessage(error);
+      set({ error: message, ...(!background && { isLoading: false }) });
+      console.error('Anonymous sign-in error:', message);
     }
   },
 
@@ -103,9 +161,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       if (IS_DEMO_MODE) {
         await get().signInAnonymously();
       }
-    } catch (error: any) {
-      set({ error: error.message, isLoading: false });
-      console.error('Sign out error:', error.message);
+    } catch (error) {
+      const message = toErrorMessage(error);
+      set({ error: message, isLoading: false });
+      console.error('Sign out error:', message);
     }
   }
 }));

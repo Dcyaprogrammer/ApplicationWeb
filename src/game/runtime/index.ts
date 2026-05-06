@@ -18,6 +18,7 @@ export { InMemoryGameRepository } from "./repository";
 export {
   LocalStorageRuntimePersistence,
   NoopRuntimePersistence,
+  SupabaseRuntimePersistence,
   type CatalogSource,
   type RunSnapshot,
   type RuntimePersistence,
