@@ -256,29 +256,21 @@ export const StoreScreen = ({ onBack }: { onBack: () => void }) => {
                             {/* QR Code Display for Purchased Items */}
                             <div className="mb-6">
                               <div className="bg-white border-[4px] border-black p-6 shadow-[4px_4px_0px_0px_#000] inline-block">
-                                {/* Simple QR Code Placeholder */}
+                                {/* QR Code pointing to portfolio */}
                                 <div className="w-48 h-48 bg-white border-2 border-black flex items-center justify-center mb-4">
-                                  <svg viewBox="0 0 100 100" className="w-full h-full">
-                                    {/* QR Code pattern */}
-                                    <rect x="10" y="10" width="20" height="20" fill="black"/>
-                                    <rect x="70" y="10" width="20" height="20" fill="black"/>
-                                    <rect x="10" y="70" width="20" height="20" fill="black"/>
-                                    <rect x="40" y="40" width="20" height="20" fill="black"/>
-                                    <rect x="70" y="70" width="20" height="20" fill="black"/>
-                                    {/* Random pattern */}
-                                    <rect x="35" y="15" width="5" height="5" fill="black"/>
-                                    <rect x="45" y="25" width="5" height="5" fill="black"/>
-                                    <rect x="15" y="45" width="5" height="5" fill="black"/>
-                                    <rect x="75" y="45" width="5" height="5" fill="black"/>
-                                    <rect x="45" y="75" width="5" height="5" fill="black"/>
-                                    <rect x="85" y="35" width="5" height="5" fill="black"/>
-                                    <rect x="25" y="85" width="5" height="5" fill="black"/>
-                                  </svg>
+                                  <img
+                                    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://gradventure-yijl.vercel.app"
+                                    alt="QR Code - Scan to view our portfolio"
+                                    className="w-full h-full"
+                                  />
                                 </div>
                                 <p className="font-black text-sm uppercase mb-2">Show this QR code to redeem</p>
                                 <div className="bg-[#FFE066] border-[2px] border-black p-3 transform -rotate-1">
                                   <p className="text-black font-black text-xs leading-tight">
-                                    ⚠️ Under Development - This QR code is not yet functional
+                                    ⚠️ Awaiting school system integration
+                                  </p>
+                                  <p className="text-black font-bold text-xs leading-tight mt-2">
+                                    Scan to view our portfolio in the meantime
                                   </p>
                                 </div>
                               </div>
