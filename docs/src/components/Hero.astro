@@ -43,7 +43,7 @@ const { title, subtitle, tag, primaryAction, secondaryAction } = Astro.props;
         </p>
         <div class="flex flex-col sm:flex-row gap-6 justify-center">
             {primaryAction && (
-                <a href={primaryAction.href} class="btn bg-brand-accent text-white hover:bg-white hover:text-black text-lg px-10 py-5 text-xl">
+                <a href={primaryAction.href} class="btn bg-brand-accent text-black hover:bg-white hover:text-black text-lg px-10 py-5 text-xl">
                     {primaryAction.text}
                 </a>
             )}
