@@ -1,4 +1,3 @@
-#!/usr/bin/env bun
 /**
  * 使用 Supabase 数据测试完整游戏流程
  */

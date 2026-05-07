@@ -1,4 +1,3 @@
-#!/usr/bin/env bun
 /**
  * 验证 Supabase 数据是否已更新到最新版本
  */

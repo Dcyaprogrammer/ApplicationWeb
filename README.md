@@ -1,65 +1,170 @@
 # Gradventure
 
-An interactive, gamified journey documenting the HCI (Human-Computer Interaction) design process. Gradventure is designed as a web-based card/board game where users progress through different stages of product development.
+Gradventure is a React-based interactive card game about the graduate school application journey, paired with an Astro documentation site that records the HCI design process behind it.
 
-## � Live Links
+## Live Links
 
-- **🎮 Play the Game (Main App):** [https://gradventure-yijl.vercel.app](https://gradventure-yijl.vercel.app)
-- **📖 HCI Design Portfolio (Docs):** [https://dcyaprogrammer.github.io/Gradventure/](https://dcyaprogrammer.github.io/Gradventure/)
+- Main app: <https://gradventure-yijl.vercel.app>
+- Docs site: <https://dcyaprogrammer.github.io/Gradventure/>
 
-## �🛠 Tech Stack (Current Progress)
+## Repo Overview
 
-### Frontend (Client)
-- **Framework:** React 19 + TypeScript
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS v4 (Neo-brutalism theme)
-- **State Management:** Zustand
-- **Data Fetching:** React Query (TanStack Query v5), Axios
-- **Animations:** Framer Motion
+This repo contains two active projects:
 
-### Backend & Database (BaaS)
-- **Platform:** Supabase
-- **Authentication:** Supabase Auth (Email/Password, Anonymous play)
-- **Database:** PostgreSQL (via Supabase)
+- `src/`: the playable app built with React, Vite, TypeScript, Zustand, Framer Motion, and Supabase
+- `docs/`: the Astro portfolio site for research, design, prototypes, and evaluation
 
-### Shared (Game Logic)
-- Custom game engine types and configurations (`src/game/` & `src/types/`)
+Supporting directories:
 
-## 🚀 Development Status
+- `scripts/analysis/`: active utility scripts
+- `scripts/archive/`: one-off legacy scripts kept only for reference
+- `notes/reference/`: reusable reference material
+- `notes/archive/`: historical implementation notes and migration logs
+- `neo-brutalism-ui-library/`: untracked reference UI library clone
 
-1. **Static Documentation (`docs/`)**: ✅ Completed
-   - Contains the Astro-based static site detailing the design journey (Crazy Eights, CJM, etc.).
-2. **Frontend Architecture (`src/client/`)**: 🚧 In Progress
-   - Vite + React + Tailwind v4 environment is set up and integrated.
-   - Core game logic types (`cards`, `characters`, `backgrounds`) have been drafted by the team in `src/game/`.
-   - **Home Page**: Completed the "Survive to Graduation" Neo-brutalism glitch UI theme (warning tapes, system failure aesthetics).
-   - **Authentication**: Completed custom Neo-brutalism `AuthModal` integrated with Supabase Auth and Zustand for state management.
-3. **Backend Architecture**: 🚧 Transitioned to Supabase
-   - Replaced initial custom Node/JWT/bcrypt plans with Supabase for faster iteration and robust Auth/DB capabilities.
+## Tech Stack
 
-## 💻 Getting Started
+### App
 
-### Prerequisites
-- [Bun](https://bun.sh/) (Recommended) or Node.js
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS v4
+- Zustand
+- Framer Motion
+- Supabase Auth + Supabase Postgres
 
-### Running the Frontend
+### Docs
+
+- Astro
+- Tailwind CSS v4
+
+## Requirements
+
+- Node.js 24+
+- npm
+
+## App Setup
+
+Install root dependencies:
+
 ```bash
-# Install dependencies
 npm install
+```
 
-# Start the Vite development server
+Start the app locally:
+
+```bash
 npm run dev
 ```
 
-### Card Catalog Source
+Build the app:
 
-The game catalog can now load from multiple sources through `VITE_GAME_CATALOG_SOURCE`:
+```bash
+npm run build
+```
 
-- `auto`: use Supabase when `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are present, otherwise fallback to the built-in demo catalog
-- `supabase`: always load cards from Supabase
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+Lint the root app and scripts:
+
+```bash
+npm run lint
+```
+
+## Docs Setup
+
+Install docs dependencies:
+
+```bash
+npm --prefix docs install
+```
+
+Start the docs site:
+
+```bash
+npm --prefix docs run dev
+```
+
+Build the docs site:
+
+```bash
+npm --prefix docs run build
+```
+
+## Environment Variables
+
+The app can run against either the built-in demo catalog or Supabase-backed data.
+
+Common variables:
+
+- `VITE_GAME_CATALOG_SOURCE`
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+- `DATABASE_URL`
+- `DIRECT_DATABASE_URL`
+
+`VITE_GAME_CATALOG_SOURCE` supports:
+
+- `auto`: use Supabase when client credentials are present, otherwise fall back to demo data
+- `supabase`: always load from Supabase
 - `local`: load the serialized catalog from `localStorage`
-- `demo`: always use the built-in demo catalog
+- `demo`: always use built-in demo data
 
-For normal development, `auto` is the safest default.
+## Database Utilities
 
-*(Note: Backend setup instructions will be updated once the server API is implemented).*
+The repo keeps lightweight TS utilities in `src/db/`, executed through `tsx`.
+
+Useful commands:
+
+```bash
+npm run db:init
+npm run db:seed
+npm run db:seed:dry
+npm run db:schema
+npm run db:export:supabase
+npm run db:check:supabase
+npm run db:check:supabase:catalog
+npm run db:check:supabase:persistence
+```
+
+Game analysis script:
+
+```bash
+npm run analyze:game
+```
+
+## Project Structure
+
+```text
+.
+├── docs/                 Astro documentation site
+├── notes/                archived and reference notes
+├── scripts/              analysis and archived utility scripts
+├── src/
+│   ├── client/           React UI
+│   ├── db/               Supabase and catalog utilities
+│   ├── game/             runtime, content, and game engine
+│   ├── shared/           shared helpers
+│   └── types/            shared types
+├── product.md            active product/design requirements
+└── README.md
+```
+
+## Current Runtime Model
+
+The repo no longer includes the earlier custom server entrypoints. The supported setup is:
+
+- Vite client app in the root project
+- Supabase-backed auth and data access
+- TS utility scripts for schema, seed, export, and verification work
+
+## Notes
+
+- `dist/` and `docs/dist/` are build outputs.
+- `docs/.astro/` is generated by Astro and should not be treated as source.
+- Some historical decisions and migration records were intentionally moved out of the repo root into `notes/archive/`.

@@ -1,4 +1,3 @@
-#!/usr/bin/env bun
 /**
  * 验证 Supabase 年份分布
  */

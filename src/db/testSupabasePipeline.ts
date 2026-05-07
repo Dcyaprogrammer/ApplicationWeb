@@ -1,10 +1,8 @@
-#!/usr/bin/env bun
 /**
  * 测试从 Supabase 读取卡牌并进行一局游戏的完整 pipeline
  */
 
 import { createClient } from "@supabase/supabase-js";
-import { deserializeCatalogFromStorage } from "../game/runtime/storage";
 import { SupabaseCatalogSource } from "../game/runtime/sources";
 import { createGameRuntimeFromCatalog } from "../game/runtime/engine";
 

@@ -4,6 +4,8 @@ import type { PanInfo } from 'framer-motion';
 import { useGameStore, getFormattedDate } from '../store/gameStore';
 import type { StatKey } from '../../types/game';
 
+type DragPointerEvent = MouseEvent | TouchEvent | PointerEvent;
+
 export const GameScreen = ({
   onQuit,
   onNavigate
@@ -16,23 +18,20 @@ export const GameScreen = ({
   const dateObj = getFormattedDate(currentDay);
 
   const [feedbackText, setFeedbackText] = useState<string | null>(null);
-  
-  // Tutorial State (0: Not started/done, 1: Stats, 2: Goal, 3: Swipe)
-  const [tutorialStep, setTutorialStep] = useState<number>(0);
 
-  useEffect(() => {
-    // If game initializes and hasn't seen tutorial, start step 1
-    if (!hasSeenTutorial && !isGameOver && currentCard) {
-      setTutorialStep(1);
-    }
-  }, [hasSeenTutorial, isGameOver, currentCard]);
+  // Tutorial State (0: Not started/done, 1: Stats, 2: Swipe, 3: Goal)
+  const [tutorialStep, setTutorialStep] = useState<number>(0);
+  const effectiveTutorialStep =
+    tutorialStep === 0 && !hasSeenTutorial && !isGameOver && currentCard
+      ? 1
+      : tutorialStep;
 
   const advanceTutorial = () => {
-    if (tutorialStep === 3) {
+    if (effectiveTutorialStep === 3) {
       setTutorialStep(0);
       completeTutorial(); // Persist it
     } else {
-      setTutorialStep(prev => prev + 1);
+      setTutorialStep(effectiveTutorialStep + 1);
     }
   };
   
@@ -69,7 +68,7 @@ export const GameScreen = ({
     initializeGame();
   }, [initializeGame]);
 
-  const handleDragEnd = async (_e: any, info: PanInfo) => {
+  const handleDragEnd = async (_event: DragPointerEvent, info: PanInfo) => {
     const threshold = 100;
     if (info.offset.x < -threshold) {
       // Dragged Left -> Select Left Choice
@@ -284,7 +283,7 @@ export const GameScreen = ({
         
         {/* Tutorial Overlay */}
         <AnimatePresence>
-          {tutorialStep > 0 && (
+          {effectiveTutorialStep > 0 && (
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -293,10 +292,10 @@ export const GameScreen = ({
               onClick={advanceTutorial}
             >
               {/* Dark Overlay with cutouts (Only dark for steps 1 and 3) */}
-              <div className={`absolute inset-0 transition-colors duration-500 ${tutorialStep === 2 ? 'bg-black/40' : 'bg-black/80'}`} />
+              <div className={`absolute inset-0 transition-colors duration-500 ${effectiveTutorialStep === 2 ? 'bg-black/40' : 'bg-black/80'}`} />
               
               {/* Tutorial Content Step 1: The Stats */}
-              {tutorialStep === 1 && (
+              {effectiveTutorialStep === 1 && (
                 <div className="absolute top-[28%] sm:top-[30%] left-0 right-0 flex flex-col items-center">
                   <motion.div 
                     initial={{ y: 20, opacity: 0 }}
@@ -317,7 +316,7 @@ export const GameScreen = ({
               )}
 
               {/* Tutorial Content Step 2: The Interaction */}
-              {tutorialStep === 2 && (
+              {effectiveTutorialStep === 2 && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-50">
                   
                   {/* The text box floating right above the card */}
@@ -352,7 +351,7 @@ export const GameScreen = ({
               )}
 
               {/* Tutorial Content Step 3: The Goal */}
-              {tutorialStep === 3 && (
+              {effectiveTutorialStep === 3 && (
                 <div className="absolute top-1/3 left-0 right-0 flex flex-col items-center">
                   <motion.div 
                     initial={{ scale: 0.9, opacity: 0 }}

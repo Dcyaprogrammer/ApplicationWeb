@@ -1,4 +1,3 @@
-#!/usr/bin/env bun
 /**
  * 估算完成 Year1-Year3 需要的卡牌数量
  */
@@ -64,4 +63,3 @@ console.log("  Year1 (Day 0-360):   ~8-10 张卡");
 console.log("  Year2 (Day 360-720): ~10-12 张卡");
 console.log("  Year3 (Day 720-1000): ~10-15 张卡");
 console.log("  总计: ~28-37 张卡");
-

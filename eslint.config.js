@@ -6,7 +6,13 @@ import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores([
+    'dist',
+    'docs/.astro',
+    'docs/dist',
+    'docs/node_modules',
+    'neo-brutalism-ui-library',
+  ]),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [

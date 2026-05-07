@@ -1,4 +1,3 @@
-#!/usr/bin/env bun
 /**
  * Test full game flow with local Year 2/Year 3 content
  */

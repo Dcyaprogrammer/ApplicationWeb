@@ -1,4 +1,4 @@
-# dependencies (bun install)
+# dependencies
 node_modules
 
 # output
@@ -38,14 +38,11 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 /src/generated/prisma
 
-# UI Library cloned for reference (do not track)
+# UI library cloned for reference (do not track)
 neo-brutalism-ui-library/
 
-
-product.md
-dev_plan.md
-
-# Deployment and testing documentation (optional to track)
-DEPLOYMENT_CHECKLIST.md
-SUPABASE_PIPELINE_VERIFICATION.md
-TEST_SUPABASE_PIPELINE.md
+# Local planning / ops notes
+notes/archive/dev_plan.md
+notes/archive/DEPLOYMENT_CHECKLIST.md
+notes/archive/SUPABASE_PIPELINE_VERIFICATION.md
+notes/archive/TEST_SUPABASE_PIPELINE.md
