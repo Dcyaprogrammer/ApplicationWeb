@@ -1,170 +1,277 @@
-# Gradventure
+<div align="center">
 
-Gradventure is a React-based interactive card game about the graduate school application journey, paired with an Astro documentation site that records the HCI design process behind it.
+# 🎓 Gradventure
 
-## Live Links
+### ✨ A Gamified Journey Through Study Abroad Applications
 
-- Main app: <https://gradventure-yijl.vercel.app>
-- Docs site: <https://dcyaprogrammer.github.io/Gradventure/>
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![Astro](https://img.shields.io/badge/Astro-v6-FF5D01?logo=astro&logoColor=white)](https://astro.build)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-## Repo Overview
+**An interactive card game about the graduate school application journey** 🎮
+**Paired with an HCI design portfolio documenting the entire process** 📚
 
-This repo contains two active projects:
+[**🚀 Try the Game**](https://gradventure-yijl.vercel.app) · [**📖 View Portfolio**](https://dcyaprogrammer.github.io/Gradventure/) · [**🐛 Report Issues**](../../issues)
 
-- `src/`: the playable app built with React, Vite, TypeScript, Zustand, Framer Motion, and Supabase
-- `docs/`: the Astro portfolio site for research, design, prototypes, and evaluation
+</div>
 
-Supporting directories:
+---
 
-- `scripts/analysis/`: active utility scripts
-- `scripts/archive/`: one-off legacy scripts kept only for reference
-- `notes/reference/`: reusable reference material
-- `notes/archive/`: historical implementation notes and migration logs
-- `neo-brutalism-ui-library/`: untracked reference UI library clone
+## 📸 Project Preview
 
-## Tech Stack
+<table>
+<tr>
+<td width="50%">
 
-### App
+### 🎮 The Game
 
-- React 19
-- TypeScript
-- Vite
-- Tailwind CSS v4
-- Zustand
-- Framer Motion
-- Supabase Auth + Supabase Postgres
+Play through 3 years of graduate school preparation, earn currency, unlock achievements, and redeem real rewards!
 
-### Docs
+- ⚡ **Real-time Progress Tracking**
+- 🏆 **Achievement System**
+- 🎁 **Reward Store**
+- 📚 **Knowledge Base**
+- 🔐 **Supabase Auth & Database**
 
-- Astro
-- Tailwind CSS v4
+</td>
+<td width="50%">
 
-## Requirements
+### 📚 The Portfolio
 
-- Node.js 24+
-- npm
+Complete HCI design documentation featuring research, design iterations, prototypes, and evaluation.
 
-## App Setup
+- 🔍 **User Research & Personas**
+- 🎨 **Design System**
+- 📱 **Interactive Prototypes**
+- 🧪 **User Testing & Evaluation**
+- 👥 **Team Contributions**
 
-Install root dependencies:
+</td>
+</tr>
+</table>
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend Game
+[![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=flat)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&style=flat)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=white&style=flat)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?logo=tailwind-css&logoColor=white&style=flat)](https://tailwindcss.com/)
+[![Zustand](https://img.shields.io/badge/-Zustand-20B2AA?logoColor=white&style=flat)](https://zustand-demo.pmnd.rs/)
+[![Framer Motion](https://img.shields.io/badge/-Framer_Motion-FF0080?logoColor=white&style=flat)](https://www.framer.com/motion/)
+
+### Backend & Database
+[![Supabase](https://img.shields.io/badge/-Supabase-3ECF8E?logo=supabase&logoColor=white&style=flat)](https://supabase.com/)
+[![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-4169E1?logo=postgresql&logoColor=white&style=flat)](https://www.postgresql.org/)
+
+### Documentation Site
+[![Astro](https://img.shields.io/badge/-Astro-FF5D01?logo=astro&logoColor=white&style=flat)](https://astro.build/)
+[![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?logo=tailwind-css&logoColor=white&style=flat)](https://tailwindcss.com/)
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- **Node.js** 24+
+- **npm** or **bun**
+
+### 📦 Installation
 
 ```bash
+# Clone the repo
+git clone https://github.com/Dcyaprogrammer/Gradventure.git
+cd Gradventure
+
+# Install root dependencies
 npm install
 ```
 
-Start the app locally:
+### 🎮 Run the Game
 
 ```bash
+# Start development server
 npm run dev
-```
 
-Build the app:
-
-```bash
+# Build for production
 npm run build
-```
 
-Preview the production build:
-
-```bash
+# Preview production build
 npm run preview
 ```
 
-Lint the root app and scripts:
+The game will be available at `http://localhost:5173`
+
+### 📚 Run the Portfolio
 
 ```bash
-npm run lint
-```
-
-## Docs Setup
-
-Install docs dependencies:
-
-```bash
+# Install docs dependencies
 npm --prefix docs install
-```
 
-Start the docs site:
-
-```bash
+# Start docs server
 npm --prefix docs run dev
 ```
 
-Build the docs site:
+The portfolio will be available at `http://localhost:4321/Gradventure/`
 
-```bash
-npm --prefix docs run build
+---
+
+## 📁 Project Structure
+
+```
+Gradventure/
+├── src/
+│   ├── client/          # React UI components
+│   ├── db/              # Supabase utilities & schemas
+│   ├── game/            # Game engine, runtime, content
+│   ├── shared/          # Shared helpers
+│   └── types/           # TypeScript types
+├── docs/                # Astro portfolio site
+│   └── src/
+│       ├── pages/       # Portfolio pages (research, design, etc.)
+│       ├── components/  # Astro components
+│       └── styles/      # Global styles
+├── scripts/
+│   └── analysis/        # Game analysis utilities
+└── notes/               # Reference & archived notes
 ```
 
-## Environment Variables
+---
 
-The app can run against either the built-in demo catalog or Supabase-backed data.
+## 🎯 Key Features
 
-Common variables:
+### Game Mechanics
+- 🃏 **Interactive Card System** - Make meaningful choices across 3 academic years
+- 💰 **Currency & Rewards** - Earn points and redeem real school rewards
+- 🏆 **Achievement System** - Unlock badges as you progress
+- 📊 **Progress Persistence** - Supabase-backed save system
+- 🎨 **Neo-Brutalism Design** - Bold, playful visual aesthetic
 
-- `VITE_GAME_CATALOG_SOURCE`
-- `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_ANON_KEY`
-- `DATABASE_URL`
-- `DIRECT_DATABASE_URL`
+### Design Documentation
+- 👤 **User Personas** - Detailed user research and journey mapping
+- 🔬 **A/B Testing** - Data-driven design decisions
+- 📱 **Prototypes** - Low-fi to high-fi interactive mockups
+- 🧪 **Usability Testing** - Comprehensive evaluation and iteration
 
-`VITE_GAME_CATALOG_SOURCE` supports:
+---
 
-- `auto`: use Supabase when client credentials are present, otherwise fall back to demo data
-- `supabase`: always load from Supabase
-- `local`: load the serialized catalog from `localStorage`
-- `demo`: always use built-in demo data
+## 🔧 Configuration
 
-## Database Utilities
+### Environment Variables
 
-The repo keeps lightweight TS utilities in `src/db/`, executed through `tsx`.
+Create a `.env` file in the root directory:
 
-Useful commands:
+```env
+# Supabase Configuration
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Database (for utility scripts)
+DATABASE_URL=your_database_url
+DIRECT_DATABASE_URL=your_direct_database_url
+
+# Game Catalog Source
+# Options: auto | supabase | local | demo
+VITE_GAME_CATALOG_SOURCE=auto
+```
+
+> 💡 **Tip**: Set `VITE_GAME_CATALOG_SOURCE=demo` to play without Supabase setup!
+
+---
+
+## 📊 Database Utilities
 
 ```bash
+# Initialize database schema
 npm run db:init
+
+# Seed database with game content
 npm run db:seed
-npm run db:seed:dry
-npm run db:schema
+
+# Export Supabase schema
 npm run db:export:supabase
+
+# Verify Supabase integration
 npm run db:check:supabase
-npm run db:check:supabase:catalog
-npm run db:check:supabase:persistence
-```
 
-Game analysis script:
-
-```bash
+# Analyze game balance
 npm run analyze:game
 ```
 
-## Project Structure
+---
 
-```text
-.
-├── docs/                 Astro documentation site
-├── notes/                archived and reference notes
-├── scripts/              analysis and archived utility scripts
-├── src/
-│   ├── client/           React UI
-│   ├── db/               Supabase and catalog utilities
-│   ├── game/             runtime, content, and game engine
-│   ├── shared/           shared helpers
-│   └── types/            shared types
-├── product.md            active product/design requirements
-└── README.md
-```
+## 👥 The Team
 
-## Current Runtime Model
+This project was built by a team of 4 students at Xi'an Jiaotong-Liverpool University:
 
-The repo no longer includes the earlier custom server entrypoints. The supported setup is:
+- **[Chengyang Du](https://github.com/Dcyaprogrammer)** - Core Developer & UI Designer
+- **[Gulong Sun](https://github.com/)** - Full-Stack Developer & Team Lead
+- **[Yanhan Jin](https://github.com/)** - Visual Designer & Creative Director
+- **[Yixuan Zheng](https://github.com/)** - User Researcher & Product Designer
 
-- Vite client app in the root project
-- Supabase-backed auth and data access
-- TS utility scripts for schema, seed, export, and verification work
+👉 **[Meet the full team and see individual contributions](https://dcyaprogrammer.github.io/Gradventure/team/)**
 
-## Notes
+---
 
-- `dist/` and `docs/dist/` are build outputs.
-- `docs/.astro/` is generated by Astro and should not be treated as source.
-- Some historical decisions and migration records were intentionally moved out of the repo root into `notes/archive/`.
+## 🎨 Design System
+
+Gradventure uses a custom **Neo-Brutalism** design system characterized by:
+
+- 🎨 **Bold Colors** - High-contrast, playful palette
+- ⬛ **Thick Borders** - 4px black borders throughout
+- 🔄 **Subtle Rotations** - Dynamic, hand-crafted feel
+- ✨ **Smooth Animations** - Powered by Framer Motion
+- 📱 **Fully Responsive** - Works on all devices
+
+👉 **[Explore our design documentation](https://dcyaprogrammer.github.io/Gradventure/design/)**
+
+---
+
+## 📈 Development Roadmap
+
+- [x] Core game mechanics
+- [x] Supabase integration
+- [x] Authentication system
+- [x] Achievement system
+- [x] Reward store
+- [x] Knowledge base
+- [x] Portfolio site
+- [ ] Mobile app version
+- [ ] Multiplayer features
+- [ ] Advanced analytics
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how you can help:
+
+1. 🍴 **Fork the repository**
+2. 🔧 **Create a feature branch** (`git checkout -b feature/AmazingFeature`)
+3. 💾 **Commit your changes** (`git commit -m 'Add some AmazingFeature'`)
+4. 📤 **Push to the branch** (`git push origin feature/AmazingFeature`)
+5. 🔀 **Open a Pull Request**
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## ⭐ Star Us!
+
+If you find this project helpful or interesting, please consider giving it a star ⭐
+
+<div align="center">
+
+**Made with ❤️ by the Gradventure Team**
+
+[**🔝 Back to Top**](#-gradventure)
+
+</div>
