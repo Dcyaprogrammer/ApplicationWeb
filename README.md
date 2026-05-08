@@ -28,7 +28,7 @@
 
 Play through 3 years of graduate school preparation, earn currency, unlock achievements, and redeem real rewards!
 
-- ⚡ **Real-time Progress Tracking**
+- ⚡ **Progress Persistence**
 - 🏆 **Achievement System**
 - 🎁 **Reward Store**
 - 📚 **Knowledge Base**
@@ -204,19 +204,6 @@ npm run analyze:game
 
 ---
 
-## 👥 The Team
-
-This project was built by a team of 4 students at Xi'an Jiaotong-Liverpool University:
-
-- **[Chengyang Du](https://github.com/Dcyaprogrammer)** - Core Developer & UI Designer
-- **[Gulong Sun](https://github.com/)** - Full-Stack Developer & Team Lead
-- **[Yanhan Jin](https://github.com/)** - Visual Designer & Creative Director
-- **[Yixuan Zheng](https://github.com/)** - User Researcher & Product Designer
-
-👉 **[Meet the full team and see individual contributions](https://dcyaprogrammer.github.io/Gradventure/team/)**
-
----
-
 ## 🎨 Design System
 
 Gradventure uses a custom **Neo-Brutalism** design system characterized by:
@@ -228,21 +215,6 @@ Gradventure uses a custom **Neo-Brutalism** design system characterized by:
 - 📱 **Fully Responsive** - Works on all devices
 
 👉 **[Explore our design documentation](https://dcyaprogrammer.github.io/Gradventure/design/)**
-
----
-
-## 📈 Development Roadmap
-
-- [x] Core game mechanics
-- [x] Supabase integration
-- [x] Authentication system
-- [x] Achievement system
-- [x] Reward store
-- [x] Knowledge base
-- [x] Portfolio site
-- [ ] Mobile app version
-- [ ] Multiplayer features
-- [ ] Advanced analytics
 
 ---
 
