@@ -20,7 +20,6 @@ Thank you for your interest in contributing to Gradventure! We welcome contribut
 ### 🎯 Planned Features
 
 #### High Priority
-- [ ] **Mobile App Version** - React Native or Progressive Web App
 - [ ] **Real-time Sync** - Multi-device synchronization using Supabase Realtime
 - [ ] **Offline Mode** - Service worker for offline gameplay
 - [ ] **Internationalization** - Multi-language support (i18n)
