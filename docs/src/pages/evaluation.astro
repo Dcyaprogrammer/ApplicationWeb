@@ -848,6 +848,51 @@ const normalizedBase = base.endsWith('/') ? base : `${base}/`;
                     </div>
                 </div>
 
+                <!-- Section: AI Reflection Examples -->
+                <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform -rotate-1 mb-12">
+                    <h4 class="text-3xl font-black mb-6 uppercase border-b-4 border-brand-accent pb-2 inline-block bg-brand-accent px-4 py-2 border-4 border-black shadow-neo">📝 AI Reflection Examples</h4>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Example 1: Code -->
+                        <div class="bg-brand-yellow border-4 border-black p-6 shadow-neo transform rotate-1">
+                            <p class="font-black text-xl mb-4">💻 <strong>Example 1: Code Development</strong></p>
+                            <div class="space-y-3 text-sm">
+                                <div>
+                                    <p class="font-black text-base mb-1"><span class="bg-black text-white px-2 py-1 font-bold mr-2">C</span><strong>Context:</strong></p>
+                                    <p class="italic text-gray-700">During developing card state control, we initialy ask agent to directly purpose an algorithm that include time control, difficulty control with access to database</p>
+                                </div>
+                                <div>
+                                    <p class="font-black text-base mb-1"><span class="bg-black text-white px-2 py-1 font-bold mr-2">O</span><strong>Outcome:</strong></p>
+                                    <p class="italic text-gray-700">The agent provided a buggy solution, especially when dealing with the database</p>
+                                </div>
+                                <div>
+                                    <p class="font-black text-base mb-1"><span class="bg-black text-white px-2 py-1 font-bold mr-2">A</span><strong>Action:</strong></p>
+                                    <p class="italic text-gray-700">We did task decomposition. At first, we ask it to store all card message in a single typescript file for algorithm testing without connecting to database. Then after the algorithm being successful, we prompt it to connect to local database and extract card. At last, we prompt it to link to cloud server and use the card informaiton there.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Example 2: Brainstorm -->
+                        <div class="bg-brand-cyan border-4 border-black p-6 shadow-neo transform -rotate-1">
+                            <p class="font-black text-xl mb-4">💡 <strong>Example 2: Brainstorm & Ideation</strong></p>
+                            <div class="space-y-3 text-sm">
+                                <div>
+                                    <p class="font-black text-base mb-1"><span class="bg-black text-white px-2 py-1 font-bold mr-2">C</span><strong>Context:</strong></p>
+                                    <p class="italic text-gray-700">During UI artistic style exploration, we asked the model to list styles that are vivid and colourful without giving it the full context of our project.</p>
+                                </div>
+                                <div>
+                                    <p class="font-black text-base mb-1"><span class="bg-black text-white px-2 py-1 font-bold mr-2">O</span><strong>Outcome:</strong></p>
+                                    <p class="italic text-gray-700">AI responded with very boring & irrelevant suggestions</p>
+                                </div>
+                                <div>
+                                    <p class="font-black text-base mb-1"><span class="bg-black text-white px-2 py-1 font-bold mr-2">A</span><strong>Action:</strong></p>
+                                    <p class="italic text-gray-700">We provided more specific context and constraints for the AI to generate more relevant suggestions. Further, we give it a persona saying "You are a top designer for young group" and detailedly described the vibe we want. We also asked it to provide related website along with its suggestion.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Section 3: Scope & Transparency -->
                 <div class="bg-white border-4 border-black p-8 shadow-neo-lg transform -rotate-1 mb-12">
                     <h4 class="text-3xl font-black mb-6 uppercase border-b-4 border-brand-purple pb-2 inline-block px-4 py-2 border-4 border-black shadow-neo" style="background-color: #A8A6FF;">🎯 Scope & Transparency</h4>
